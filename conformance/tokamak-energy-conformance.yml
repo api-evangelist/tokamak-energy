@@ -1,0 +1,85 @@
+generated: '2026-08-30'
+method: probed
+source: Live probes of https://tokamakenergy.com/wp-json/ (2026-08-30) and the nine openapi/ documents
+  in this repository
+note: Cross-cutting standards this interface does and does not conform to. Every true entry is backed
+  by an observed response; every false entry is an honest absence, not a penalty.
+entries:
+- id: oembed-1.0
+  conforms: true
+  evidence: 'GET https://tokamakenergy.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ftokamakenergy.com%2Fabout-us%2F
+    returned HTTP 200 with a conforming oEmbed 1.0 response document: version "1.0", provider_name "Tokamak
+    Energy", provider_url, author_name, author_url, title, type "rich", width, height.'
+  method: probed
+- id: rfc8288-web-linking
+  conforms: true
+  evidence: 'Collection responses carry a Link header with rel="next" / rel="prev", e.g. link: <https://tokamakenergy.com/wp-json/wp/v2/posts?per_page=1&page=2>;
+    rel="next".'
+  method: probed
+- id: json-schema
+  conforms: true
+  evidence: Every collection route answers an OPTIONS request with a JSON Schema document describing the
+    item under `schema`, and the route descriptors at GET /wp-json/ carry per-argument type, enum, default,
+    minimum and maximum. This is what the openapi/ documents in this repository were derived from.
+  method: probed
+- id: cors
+  conforms: true
+  evidence: 'access-control-expose-headers: X-WP-Total, X-WP-TotalPages, Link; access-control-allow-headers:
+    Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type; vary: Origin.'
+  method: probed
+- id: pagination
+  conforms: true
+  evidence: Page-number pagination with page/per_page parameters plus X-WP-Total and X-WP-TotalPages response
+    headers, observed on every collection.
+  method: probed
+- id: http-basic-rfc7617
+  conforms: true
+  evidence: WordPress Application Passwords, advertised at GET /wp-json/ under authentication.application-passwords
+    with authorization endpoint https://tokamakenergy.com/wp-admin/authorize-application.php.
+  method: probed
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 'Errors are returned as the WordPress flat envelope {code, message, data.status} with content-type
+    application/json, not application/problem+json. Observed: {"code":"rest_post_invalid_id","message":"Invalid
+    post ID.","data":{"status":404}}.'
+  method: probed
+- id: oauth2
+  conforms: false
+  evidence: GET https://tokamakenergy.com/.well-known/oauth-authorization-server -> 404. No OAuth surface.
+  method: probed
+- id: oidc
+  conforms: false
+  evidence: GET https://tokamakenergy.com/.well-known/openid-configuration -> 404.
+  method: probed
+- id: idempotency
+  conforms: false
+  evidence: No Idempotency-Key support. Not applicable — the public surface is read-only. See conventions/tokamak-energy-conventions.yml.
+  method: derived
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: GET https://tokamakenergy.com/.well-known/security.txt -> 404.
+  method: probed
+- id: rfc8594-sunset
+  conforms: false
+  evidence: No Sunset or Deprecation header observed on any response.
+  method: probed
+domain_standard:
+  declared: false
+  searched:
+  - ITER IMAS (Integrated Modelling & Analysis Suite) data dictionary
+  - IEC 61850 / CIM (IEC 61970) energy grid models
+  - OPC UA information models
+  - HDF5 / NetCDF scientific data conventions
+  - IMAS Access Layer
+  note: 'REWARD-ONLY, and this provider earns nothing here — correctly. Tokamak Energy operates in fusion
+    research and superconducting magnet manufacturing, a market that does have data standards (notably
+    the ITER IMAS data dictionary for plasma physics, and IEC 61850/CIM on the grid side). None of them
+    is declared by this contract, and none could be: the only interface Tokamak Energy exposes publicly
+    is a CMS content API, which has no fusion-domain payload to standardise. The company''s actual fusion-domain
+    data work is released as open-source code — GSFit, RTGSFit, FORGE — not as an API. No conformance
+    is invented to fill this slot.'
+compliance:
+  certifications_published: false
+  note: No trust centre, no SOC 2 / ISO 27001 / PCI / HIPAA / FedRAMP claim, and no security programme
+    page was found. probe-security-programs.py returned vdp=none trust=none. No Compliance or TrustCenter
+    pointer is emitted in apis.yml.

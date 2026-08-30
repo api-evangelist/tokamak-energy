@@ -1,0 +1,246 @@
+{
+  "x-provenance": {
+    "generated": "2026-08-30",
+    "method": "probed",
+    "source": "https://tokamakenergy.com/wp-json/wp/v2/posts?per_page=1",
+    "note": "Verbatim live response captured anonymously from the Tokamak Energy WordPress REST API. _links removed and string values longer than 600 characters truncated with an explicit marker; no value was altered otherwise."
+  },
+  "response": [
+    {
+      "id": 9774,
+      "date": "2026-08-18T08:59:47",
+      "date_gmt": "2026-08-18T07:59:47",
+      "guid": {
+        "rendered": "https://tokamakenergy.com/?p=9774"
+      },
+      "modified": "2026-08-18T09:25:04",
+      "modified_gmt": "2026-08-18T08:25:04",
+      "slug": "tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal",
+      "status": "publish",
+      "type": "post",
+      "link": "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/",
+      "title": {
+        "rendered": "Tokamak Energy&#8217;s &#8216;Focus Collection&#8217; featured in prestigious Nuclear Fusion journal"
+      },
+      "content": {
+        "rendered": "<p>We\u2019re celebrating this week\u2019s publication of a Tokamak Energy special edition of Nuclear Fusion, the most prestigious fusion energy journal in the world.</p>\n<p>Our \u2018Focus Collection\u2019 of 11 papers brings together open, peer-reviewed work spanning plasma physics, engineering systems, and commercial considerations for a fusion pilot plant.</p>\n<p>While we will not go on to construct it, the papers are a model for accelerating fusion development and showcase our deep design expertise and broad systems integration capabilities. As the only private company with 15 years\u2019 experience designing, bu \u2026 [truncated by API Evangelist for readability; full value returned by the live API]",
+        "protected": false
+      },
+      "excerpt": {
+        "rendered": "<p>We\u2019re celebrating this week\u2019s publication of a Tokamak Energy special edition of Nuclear Fusion, the most prestigious fusion energy journal in the world. Our \u2018Focus Collection\u2019 of 11 papers brings together open, peer-reviewed work spanning plasma physics, engineering systems, and commercial considerations for a fusion pilot plant. While we will not go on to construct [&hellip;]</p>\n",
+        "protected": false
+      },
+      "author": 4,
+      "featured_media": 9775,
+      "comment_status": "closed",
+      "ping_status": "closed",
+      "sticky": false,
+      "template": "",
+      "format": "standard",
+      "meta": {
+        "inline_featured_image": false,
+        "footnotes": ""
+      },
+      "categories": [
+        4
+      ],
+      "tags": [],
+      "class_list": [
+        "post-9774",
+        "post",
+        "type-post",
+        "status-publish",
+        "format-standard",
+        "has-post-thumbnail",
+        "hentry",
+        "category-news",
+        "grve-isotope-item",
+        "grve-blog-item"
+      ],
+      "yoast_head": "<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/ -->\n<title>Tokamak Energy&#039;s &#039;Focus Collection&#039; featured in prestigious Nuclear Fusion journal - Tokamak Energy</title>\n<meta name=\"description\" content=\"We\u2019re celebrating this week\u2019s publication of a Tokamak Energy special edition of Nuclear Fusion, the most prestigious fusion energy journal in the world. Our \u2018Focus Collection\u2019 of 11 papers brings together open, peer-reviewed work spanning plasma physics, engineering systems, and commercial considerations for a fusion pil \u2026 [truncated by API Evangelist for readability; full value returned by the live API]",
+      "yoast_head_json": {
+        "title": "Tokamak Energy's 'Focus Collection' featured in prestigious Nuclear Fusion journal - Tokamak Energy",
+        "description": "We\u2019re celebrating this week\u2019s publication of a Tokamak Energy special edition of Nuclear Fusion, the most prestigious fusion energy journal in the world. Our \u2018Focus Collection\u2019 of 11 papers brings together open, peer-reviewed work spanning plasma physics, engineering systems, and commercial considerations for a fusion pilot plant.",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "canonical": "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/",
+        "og_locale": "en_GB",
+        "og_type": "article",
+        "og_title": "Tokamak Energy's 'Focus Collection' featured in prestigious Nuclear Fusion journal - Tokamak Energy",
+        "og_description": "We\u2019re celebrating this week\u2019s publication of a Tokamak Energy special edition of Nuclear Fusion, the most prestigious fusion energy journal in the world. Our \u2018Focus Collection\u2019 of 11 papers brings together open, peer-reviewed work spanning plasma physics, engineering systems, and commercial considerations for a fusion pilot plant.",
+        "og_url": "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/",
+        "og_site_name": "Tokamak Energy",
+        "article_published_time": "2026-08-18T07:59:47+00:00",
+        "article_modified_time": "2026-08-18T08:25:04+00:00",
+        "og_image": [
+          {
+            "width": 2560,
+            "height": 1701,
+            "url": "https://tokamakenergy.com/wp-content/uploads/2026/08/Nuclear-Fusion-Team-Aug-2026-scaled.jpg",
+            "type": "image/jpeg"
+          }
+        ],
+        "author": "Stuart White",
+        "twitter_card": "summary_large_image",
+        "twitter_creator": "@TokamakEnergy",
+        "twitter_site": "@TokamakEnergy",
+        "twitter_misc": {
+          "Written by": "Stuart White",
+          "Estimated reading time": "3 minutes"
+        },
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Article",
+              "@id": "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/#article",
+              "isPartOf": {
+                "@id": "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/"
+              },
+              "author": {
+                "name": "Stuart White",
+                "@id": "https://tokamakenergy.com/#/schema/person/d72ed58d58a15a93dc6a403c5040a1bd"
+              },
+              "headline": "Tokamak Energy&#8217;s &#8216;Focus Collection&#8217; featured in prestigious Nuclear Fusion journal",
+              "datePublished": "2026-08-18T07:59:47+00:00",
+              "dateModified": "2026-08-18T08:25:04+00:00",
+              "mainEntityOfPage": {
+                "@id": "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/"
+              },
+              "wordCount": 475,
+              "publisher": {
+                "@id": "https://tokamakenergy.com/#organization"
+              },
+              "image": {
+                "@id": "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/#primaryimage"
+              },
+              "thumbnailUrl": "https://tokamakenergy.com/wp-content/uploads/2026/08/Nuclear-Fusion-Team-Aug-2026-scaled.jpg",
+              "articleSection": [
+                "Our news"
+              ],
+              "inLanguage": "en-GB"
+            },
+            {
+              "@type": "WebPage",
+              "@id": "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/",
+              "url": "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/",
+              "name": "Tokamak Energy's 'Focus Collection' featured in prestigious Nuclear Fusion journal - Tokamak Energy",
+              "isPartOf": {
+                "@id": "https://tokamakenergy.com/#website"
+              },
+              "primaryImageOfPage": {
+                "@id": "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/#primaryimage"
+              },
+              "image": {
+                "@id": "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/#primaryimage"
+              },
+              "thumbnailUrl": "https://tokamakenergy.com/wp-content/uploads/2026/08/Nuclear-Fusion-Team-Aug-2026-scaled.jpg",
+              "datePublished": "2026-08-18T07:59:47+00:00",
+              "dateModified": "2026-08-18T08:25:04+00:00",
+              "description": "We\u2019re celebrating this week\u2019s publication of a Tokamak Energy special edition of Nuclear Fusion, the most prestigious fusion energy journal in the world. Our \u2018Focus Collection\u2019 of 11 papers brings together open, peer-reviewed work spanning plasma physics, engineering systems, and commercial considerations for a fusion pilot plant.",
+              "breadcrumb": {
+                "@id": "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/#breadcrumb"
+              },
+              "inLanguage": "en-GB",
+              "potentialAction": [
+                {
+                  "@type": "ReadAction",
+                  "target": [
+                    "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/"
+                  ]
+                }
+              ]
+            },
+            {
+              "@type": "ImageObject",
+              "inLanguage": "en-GB",
+              "@id": "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/#primaryimage",
+              "url": "https://tokamakenergy.com/wp-content/uploads/2026/08/Nuclear-Fusion-Team-Aug-2026-scaled.jpg",
+              "contentUrl": "https://tokamakenergy.com/wp-content/uploads/2026/08/Nuclear-Fusion-Team-Aug-2026-scaled.jpg",
+              "width": 2560,
+              "height": 1701
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://tokamakenergy.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Tokamak Energy&#8217;s &#8216;Focus Collection&#8217; featured in prestigious Nuclear Fusion journal"
+                }
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://tokamakenergy.com/#website",
+              "url": "https://tokamakenergy.com/",
+              "name": "Tokamak Energy",
+              "description": "Ensuring energy security for all",
+              "publisher": {
+                "@id": "https://tokamakenergy.com/#organization"
+              },
+              "potentialAction": [
+                {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://tokamakenergy.com/?s={search_term_string}"
+                  },
+                  "query-input": {
+                    "@type": "PropertyValueSpecification",
+                    "valueRequired": true,
+                    "valueName": "search_term_string"
+                  }
+                }
+              ],
+              "inLanguage": "en-GB"
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://tokamakenergy.com/#organization",
+              "name": "Tokamak Energy",
+              "url": "https://tokamakenergy.com/",
+              "logo": {
+                "@type": "ImageObject",
+                "inLanguage": "en-GB",
+                "@id": "https://tokamakenergy.com/#/schema/logo/image/",
+                "url": "https://www.tokamakenergy.co.uk/wp-content/uploads/2022/09/tokamak_logo.png",
+                "contentUrl": "https://www.tokamakenergy.co.uk/wp-content/uploads/2022/09/tokamak_logo.png",
+                "width": 2000,
+                "height": 485,
+                "caption": "Tokamak Energy"
+              },
+              "image": {
+                "@id": "https://tokamakenergy.com/#/schema/logo/image/"
+              },
+              "sameAs": [
+                "https://x.com/TokamakEnergy",
+                "https://www.instagram.com/tokamakenergy/",
+                "https://www.linkedin.com/company/tokamak-energy-ltd",
+                "https://www.youtube.com/channel/UCuSlFJbBUIj1zfJLRnGXSow"
+              ]
+            },
+            {
+              "@type": "Person",
+              "@id": "https://tokamakenergy.com/#/schema/person/d72ed58d58a15a93dc6a403c5040a1bd",
+              "name": "Stuart White",
+              "url": "https://tokamakenergy.com/author/stuart/"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

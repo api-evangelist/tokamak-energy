@@ -1,0 +1,51 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Tokamak Energy Media API
+  version: 1.0.0
+extends: tokamak-energy-media-api-openapi.yml
+x-provenance:
+  generated: '2026-08-30'
+  method: generated
+  source: openapi/tokamak-energy-media-api-openapi.yml
+  note: Captures API Evangelist enhancements as an Overlay rather than mutating the derived OpenAPI. Adds
+    provenance, access posture, base-URL verification, per-operation safety annotations and a link to
+    the error catalogue.
+actions:
+- target: $.info
+  description: Record that this document was derived by API Evangelist from live WordPress REST route
+    descriptors, and is not a contract Tokamak Energy authored or publishes.
+  update:
+    x-api-evangelist:
+      derived: true
+      derived_on: '2026-08-30'
+      derived_from: https://tokamakenergy.com/wp-json/ route descriptors + OPTIONS item schemas
+      provider_publishes_openapi: false
+      profile: https://github.com/api-evangelist/tokamak-energy
+- target: $.info
+  description: Record the anonymous, read-only nature of the surface described here.
+  update:
+    x-access:
+      anonymous: true
+      read_only: true
+      note: Every operation in this document returns HTTP 200 to an unauthenticated GET. The underlying
+        routes also accept write methods, which require a WordPress Application Password and are out of
+        scope here.
+- target: $.servers[0]
+  description: Confirm the base URL was reconciled against apis.yml and the live host.
+  update:
+    x-verified:
+      status: 200
+      checked: '2026-08-30'
+      method: probed
+- target: $.paths.*.get
+  description: Mark every operation as safe and side-effect free so an agent can call it without an approval
+    gate.
+  update:
+    x-safe: true
+    x-consequence: none
+    x-reversibility: na
+- target: $.components.schemas.WPError
+  description: Point the error schema at the full problem-type catalogue derived in this repository.
+  update:
+    x-catalog: errors/tokamak-energy-problem-types.yml
+    x-rfc9457: false

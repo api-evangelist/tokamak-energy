@@ -1,0 +1,73 @@
+# Tokamak Energy
+
+> Tokamak Energy is a private fusion energy company founded in 2009 as a spinout from the UK Atomic Energy Authority, headquartered at Milton Park, Oxfordshire, with subsidiaries in the USA and Japan and over 300 employees. It runs a two-track strategy — commercial fusion via compact spherical tokamaks, and high temperature superconducting (HTS) magnet technology as a business in its own right. Its ST40 is the world's highest field spherical tokamak and is undergoing a USD 52 million upgrade co-funded with the US DOE and the UK DESNZ; Demo4 was the first HTS fusion magnet system to reach fusion-relevant fields (2025); the company is Magnet Systems Partner for the UK STEP programme under a GBP 70 million contract to 2029. Three integrated businesses: TE Magnetics, Ridgway Machines and Fusion.
+
+## What Tokamak Energy does NOT publish
+
+Read this before looking for one. Tokamak Energy is a fusion and superconducting hardware company,
+not a software vendor. There is **no product API, no developer portal, no developer signup, no API
+keys, no SDK, no CLI, no MCP server, no A2A agent card, no OpenAPI document, no pricing page and no
+status page.** Probes on 2026-08-30 returned 404 for every `/.well-known/` path on the only host,
+and no `api.`, `developer.`, `docs.` or `data.` subdomain resolves in DNS. This is an honest zero,
+not a gap in research.
+
+## The one machine-readable interface that does exist
+
+tokamakenergy.com runs on WordPress and exposes the WordPress core REST API. It is anonymously
+readable, read-only for unauthenticated callers, and incidental to the corporate website rather
+than a product. It is genuinely useful for one thing: reading Tokamak Energy's own news, pages and
+press media as structured JSON instead of scraping HTML.
+
+- [API root / discovery document](https://tokamakenergy.com/wp-json/): namespaces, the full route table with per-argument type, enum, default, minimum and maximum, and the supported authentication methods. Start here.
+- [News posts](https://tokamakenergy.com/wp-json/wp/v2/posts): 84 published items (2026-08-30). Supports `search`, `categories`, `after`, `modified_after`, `_fields`, `_embed`.
+- [Pages](https://tokamakenergy.com/wp-json/wp/v2/pages): 26 static pages — About Us, technology, TE Magnetics, careers, Why Fusion, USA, Japan, Videos, Contact, Privacy.
+- [Media library](https://tokamakenergy.com/wp-json/wp/v2/media): 853 assets including ST40, Demo4 and TE Magnetics imagery, diagrams and PDFs.
+- [Area items](https://tokamakenergy.com/wp-json/wp/v2/area-item): 27 items in a site-specific custom post type used to compose the technology and careers areas.
+- [Categories](https://tokamakenergy.com/wp-json/wp/v2/categories): 8 terms. The `post_tag` taxonomy is registered but empty — do not filter on tags.
+- [Search](https://tokamakenergy.com/wp-json/wp/v2/search): full-text across 137 searchable objects, returning id/title/url/type/subtype.
+- [Authors](https://tokamakenergy.com/wp-json/wp/v2/users): 4 public author records.
+- [oEmbed](https://tokamakenergy.com/wp-json/oembed/1.0/embed): oEmbed 1.0 provider endpoint for any Tokamak Energy URL.
+
+## How to call it
+
+- Base URL: `https://tokamakenergy.com/wp-json`
+- No key, no signup, no OAuth. Authentication exists only as WordPress Application Passwords (HTTP Basic) for site operators, and is required for write operations and the `edit` context.
+- Pagination is `page` + `per_page` (default 10, max 100), with `X-WP-Total` and `X-WP-TotalPages` response headers and an RFC 8288 `Link` header carrying `rel="next"`. Follow the header; do not increment `page`.
+- Trim responses with `_fields=id,title,link,date` — rendered HTML bodies dominate the payload otherwise. Inline related objects with `_embed`.
+- Errors are the flat WordPress envelope `{"code":…,"message":…,"data":{"status":…}}` with content-type `application/json`. **Not RFC 9457.** Branch on `code`; `message` is localised. `rest_forbidden` (401/403) is permanent for anonymous callers — do not retry.
+- **No rate limit is published and no `RateLimit-*` or `Retry-After` header is returned.** You get no warning before a ceiling. `robots.txt` requests `Crawl-delay: 2`; honour it.
+- **No `ETag`, `Last-Modified` or `Cache-Control`.** Conditional requests are unavailable; detect change by comparing the `modified` field.
+- Everything above is a safe GET. There is no anonymous write surface, so idempotency, dry-run and reversibility are all not-applicable here.
+
+## Open source
+
+Tokamak Energy's real public engineering output is code, not an API — released through the
+[tokamak-energy GitHub organisation](https://github.com/tokamak-energy).
+
+- [gsfit](https://github.com/tokamak-energy/gsfit): Grad-Shafranov equilibrium reconstruction. Published to PyPI as `gsfit` 0.0.10 (2026-08-05); repository last pushed 2026-08-28.
+- [rtgsfit](https://github.com/tokamak-energy/rtgsfit): real-time equilibrium reconstruction in C. Source only, no registry release.
+- [FORGE](https://github.com/tokamak-energy/FORGE): divertor magnetic geometry optimisation via simulated annealing. Fork.
+- [freegs-gsfit](https://github.com/tokamak-energy/freegs-gsfit): free boundary Grad-Shafranov solver. Fork, dormant since 2023.
+
+These are scientific computing libraries, **not** SDKs for any Tokamak Energy API.
+
+## Company links
+
+- [Website](https://tokamakenergy.com/)
+- [About us](https://tokamakenergy.com/about-us/)
+- [Our fusion energy and HTS technology](https://tokamakenergy.com/our-fusion-energy-and-hts-technology/)
+- [TE Magnetics](https://tokamakenergy.com/our-fusion-energy-and-hts-technology/te-magnetics/)
+- [Why fusion](https://tokamakenergy.com/why-fusion/)
+- [News](https://tokamakenergy.com/latest-news/) · [RSS](https://tokamakenergy.com/feed/)
+- [Videos](https://tokamakenergy.com/videos/)
+- [Careers](https://tokamakenergy.com/careers-at-tokamak-energy-fusion-energy/) · [Current vacancies](https://tokamakenergy.com/current-vacancies/)
+- [Contact](https://tokamakenergy.com/contact-us/)
+- [Privacy](https://tokamakenergy.com/privacy/)
+- [GitHub](https://github.com/tokamak-energy)
+
+## Provenance
+
+Generated by API Evangelist on 2026-08-30 from live probes of tokamakenergy.com and its WordPress
+REST API, the tokamak-energy GitHub organisation, PyPI, and the company's own About page. This file
+is not published by Tokamak Energy. Independent third-party profile:
+https://github.com/api-evangelist/tokamak-energy

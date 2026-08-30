@@ -1,0 +1,712 @@
+openapi: 3.1.0
+info:
+  title: Tokamak Energy Media API
+  version: wp/v2
+  description: Public, unauthenticated read access to the Tokamak Energy media library — images, diagrams,
+    PDFs and video assets attached to news posts and pages, including ST40, Demo4 and TE Magnetics imagery.
+    Verified live at 853 media items on 2026-08-30. Read-only anonymous surface; upload, edit, sideload
+    and post-process routes exist but require authentication.
+  contact:
+    name: Tokamak Energy
+    url: https://tokamakenergy.com/contact-us/
+  x-derived-from: Live WordPress REST API route descriptors and OPTIONS item schemas served by https://tokamakenergy.com/wp-json/
+    (probed 2026-08-30).
+servers:
+- url: https://tokamakenergy.com/wp-json
+  description: Tokamak Energy WordPress REST API
+tags:
+- name: Media
+  description: Public, unauthenticated read access to the Tokamak Energy media library — images, diagrams,
+    PDFs and video assets attached to news posts and pages, including ST40, Demo4 and TE Magnetics imagery.
+    Veri
+paths:
+  /wp/v2/media:
+    get:
+      operationId: listMedia
+      summary: List media
+      description: Returns a paginated collection of media published on tokamakenergy.com. Anonymous,
+        read-only. Probed live 2026-08-30 (853 items).
+      tags:
+      - Media
+      parameters:
+      - name: context
+        in: query
+        description: Scope under which the request is made; determines fields present in response.
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: page
+        in: query
+        description: Current page of the collection.
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: per_page
+        in: query
+        description: Maximum number of items to be returned in result set.
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 10
+      - name: search
+        in: query
+        description: Limit results to those matching a string.
+        required: false
+        schema:
+          type: string
+      - name: after
+        in: query
+        description: Limit response to posts published after a given ISO8601 compliant date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: modified_after
+        in: query
+        description: Limit response to posts modified after a given ISO8601 compliant date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: author
+        in: query
+        description: Limit result set to posts assigned to specific authors.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: author_exclude
+        in: query
+        description: Ensure result set excludes posts assigned to specific authors.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: before
+        in: query
+        description: Limit response to posts published before a given ISO8601 compliant date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: modified_before
+        in: query
+        description: Limit response to posts modified before a given ISO8601 compliant date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: exclude
+        in: query
+        description: Ensure result set excludes specific IDs.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: include
+        in: query
+        description: Limit result set to specific IDs.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: search_semantics
+        in: query
+        description: How to interpret the search input.
+        required: false
+        schema:
+          type: string
+          enum:
+          - exact
+      - name: offset
+        in: query
+        description: Offset the result set by a specific number of items.
+        required: false
+        schema:
+          type: integer
+      - name: order
+        in: query
+        description: Order sort attribute ascending or descending.
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      - name: orderby
+        in: query
+        description: Sort collection by post attribute.
+        required: false
+        schema:
+          type: string
+          enum:
+          - author
+          - date
+          - id
+          - include
+          - modified
+          - parent
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          default: date
+      - name: parent
+        in: query
+        description: Limit result set to items with particular parent IDs.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: parent_exclude
+        in: query
+        description: Limit result set to all items except those of a particular parent ID.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: search_columns
+        in: query
+        description: Array of column names to be searched.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            enum:
+            - post_title
+            - post_content
+            - post_excerpt
+            type: string
+      - name: slug
+        in: query
+        description: Limit result set to posts with one or more specific slugs.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: status
+        in: query
+        description: Limit result set to posts assigned one or more statuses.
+        required: false
+        schema:
+          type: array
+          default: inherit
+          items:
+            enum:
+            - inherit
+            - private
+            - trash
+            type: string
+      - name: media_type
+        in: query
+        description: Limit result set to attachments of a particular media type or media types.
+        required: false
+        schema:
+          type: array
+          default: null
+          items:
+            type: string
+            enum:
+            - image
+            - video
+            - text
+            - application
+            - audio
+            - font
+      - name: mime_type
+        in: query
+        description: Limit result set to attachments of a particular MIME type or MIME types.
+        required: false
+        schema:
+          type: array
+          default: null
+          items:
+            type: string
+      responses:
+        '200':
+          description: A page of media.
+          headers:
+            X-WP-Total:
+              description: Total number of items in the collection.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total number of pages available at the current per_page value.
+              schema:
+                type: integer
+            Link:
+              description: RFC 8288 pagination links (rel="next" / rel="prev").
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MediaItem'
+              example:
+              - id: 9988
+                date: '2026-08-21T17:01:59'
+                date_gmt: '2026-08-21T16:01:59'
+                guid:
+                  rendered: https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142.jpg
+                modified: '2026-08-21T17:01:59'
+                modified_gmt: '2026-08-21T16:01:59'
+                slug: st-e1-full-bioshield-scene-v2-142
+                status: inherit
+                type: attachment
+                link: https://tokamakenergy.com/st-e1-full-bioshield-scene-v2-142/
+                title:
+                  rendered: ST-E1 Full Bioshield Scene V2.142
+                author: 5
+                featured_media: 0
+                comment_status: closed
+                ping_status: closed
+                template: ''
+                meta:
+                  inline_featured_image: false
+                class_list:
+                - post-9988
+                - attachment
+                - type-attachment
+                - status-inherit
+                - hentry
+                - grve-isotope-item
+                description:
+                  rendered: <p class="attachment"><a href='https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-scaled.jpg'><img
+                    loading="lazy" decoding="async" width="300" height="188" src="https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-300x188.jpg"
+                    class="attachment-medium size-medium" alt="" srcset="https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-300x188.jpg
+                    300w, https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-1024x640.jpg
+                    1024w, https://tokamakenergy.com/wp-content/u … [truncated by API Evangelist for readability;
+                    full value returned by the live API]
+                caption:
+                  rendered: ''
+                alt_text: ''
+                media_type: image
+                mime_type: image/jpeg
+                media_details:
+                  width: 2560
+                  height: 1600
+                  file: 2026/08/ST-E1-Full-Bioshield-Scene-V2.142-scaled.jpg
+                  filesize: 461320
+                  sizes:
+                    medium:
+                      file: ST-E1-Full-Bioshield-Scene-V2.142-300x188.jpg
+                      width: 300
+                      height: 188
+                      filesize: 13367
+                      mime_type: image/jpeg
+                      source_url: https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-300x188.jpg
+                    large:
+                      file: ST-E1-Full-Bioshield-Scene-V2.142-1024x640.jpg
+                      width: 1024
+                      height: 640
+                      filesize: 104229
+                      mime_type: image/jpeg
+                      source_url: https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-1024x640.jpg
+                    thumbnail:
+                      file: ST-E1-Full-Bioshield-Scene-V2.142-150x150.jpg
+                      width: 150
+                      height: 150
+                      filesize: 6484
+                      mime_type: image/jpeg
+                      source_url: https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-150x150.jpg
+                    medium_large:
+                      file: ST-E1-Full-Bioshield-Scene-V2.142-768x480.jpg
+                      width: 768
+                      height: 480
+                      filesize: 63848
+                      mime_type: image/jpeg
+                      source_url: https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-768x480.jpg
+                    1536x1536:
+                      file: ST-E1-Full-Bioshield-Scene-V2.142-1536x960.jpg
+                      width: 1536
+                      height: 960
+                      filesize: 205301
+                      mime_type: image/jpeg
+                      source_url: https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-1536x960.jpg
+                    full:
+                      file: ST-E1-Full-Bioshield-Scene-V2.142-scaled.jpg
+                      width: 2560
+                      height: 1600
+                      mime_type: image/jpeg
+                      source_url: https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-scaled.jpg
+                  image_meta:
+                    aperture: '0'
+                    credit: ''
+                    camera: ''
+                    caption: ''
+                    created_timestamp: '0'
+                    copyright: ''
+                    focal_length: '0'
+                    iso: '0'
+                    shutter_speed: '0'
+                    title: ''
+                    orientation: '0'
+                    keywords: []
+                    alt: ''
+                  original_image: ST-E1-Full-Bioshield-Scene-V2.142.jpg
+                post: null
+                source_url: https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-scaled.jpg
+                filename: ST-E1-Full-Bioshield-Scene-V2.142.jpg
+                filesize: 461320
+        '400':
+          description: Bad request — an invalid parameter value was supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+  /wp/v2/media/{id}:
+    get:
+      operationId: getMediaItem
+      summary: Retrieve a media item
+      description: Returns a single media item by its numeric identifier. Anonymous, read-only.
+      tags:
+      - Media
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique numeric identifier for the media item.
+        schema:
+          type: integer
+      - name: context
+        in: query
+        description: Scope under which the request is made; determines fields present in response.
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: The requested media item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaItem'
+        '400':
+          description: Bad request — an invalid parameter value was supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: Not found — no item exists with the supplied identifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+components:
+  schemas:
+    WPError:
+      type: object
+      title: WPError
+      description: WordPress REST API error envelope, observed live on this host.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_post_invalid_id or rest_forbidden.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          description: Error data.
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+      required:
+      - code
+      - message
+    MediaItem:
+      title: attachment
+      type: object
+      properties:
+        date:
+          description: The date the post was published, in the site's time zone.
+          type:
+          - string
+          nullable: true
+          format: date-time
+        date_gmt:
+          description: The date the post was published, as GMT.
+          type:
+          - string
+          nullable: true
+          format: date-time
+        guid:
+          description: The globally unique identifier for the post.
+          type: object
+          properties:
+            raw:
+              description: GUID for the post, as it exists in the database.
+              type: string
+            rendered:
+              description: GUID for the post, transformed for display.
+              type: string
+        id:
+          description: Unique identifier for the post.
+          type: integer
+        link:
+          description: URL to the post.
+          type: string
+          format: uri
+        modified:
+          description: The date the post was last modified, in the site's time zone.
+          type: string
+          format: date-time
+        modified_gmt:
+          description: The date the post was last modified, as GMT.
+          type: string
+          format: date-time
+        slug:
+          description: An alphanumeric identifier for the post unique to its type.
+          type: string
+        status:
+          description: A named status for the object.
+          type: string
+          enum:
+          - publish
+          - future
+          - draft
+          - pending
+          - private
+        type:
+          description: Type of post.
+          type: string
+        permalink_template:
+          description: Permalink template for the post.
+          type: string
+        generated_slug:
+          description: Slug automatically generated from the post title.
+          type: string
+        class_list:
+          description: An array of the class names for the post container element.
+          type: array
+          items:
+            type: string
+        title:
+          description: The title for the post.
+          type: object
+          properties:
+            raw:
+              description: Title for the object, as it exists in the database.
+              type: string
+            rendered:
+              description: HTML title for the object, transformed for display.
+              type: string
+        author:
+          description: The ID for the author of the post.
+          type: integer
+        featured_media:
+          description: The ID of the featured media for the post.
+          type: integer
+        comment_status:
+          description: Whether or not comments are open on the post.
+          type: string
+          enum:
+          - open
+          - closed
+        ping_status:
+          description: Whether or not the post can be pinged.
+          type: string
+          enum:
+          - open
+          - closed
+        meta:
+          description: Meta fields.
+          type: object
+          properties:
+            inline_featured_image:
+              type: boolean
+              title: ''
+              description: ''
+              default: false
+        template:
+          description: The theme file to use to display the post.
+          type: string
+        alt_text:
+          description: Alternative text to display when attachment is not displayed.
+          type: string
+        caption:
+          description: The attachment caption.
+          type: object
+          properties:
+            raw:
+              description: Caption for the attachment, as it exists in the database.
+              type: string
+            rendered:
+              description: HTML caption for the attachment, transformed for display.
+              type: string
+        description:
+          description: The attachment description.
+          type: object
+          properties:
+            raw:
+              description: Description for the attachment, as it exists in the database.
+              type: string
+            rendered:
+              description: HTML description for the attachment, transformed for display.
+              type: string
+        media_type:
+          description: Attachment type.
+          type: string
+          enum:
+          - image
+          - file
+        mime_type:
+          description: The attachment MIME type.
+          type: string
+        media_details:
+          description: Details about the media file, specific to its type.
+          type: object
+        post:
+          description: The ID for the associated post of the attachment.
+          type: integer
+        source_url:
+          description: URL to the original attachment file.
+          type: string
+          format: uri
+        missing_image_sizes:
+          description: List of the missing image sizes of the attachment.
+          type: array
+          items:
+            type: string
+        filename:
+          description: Original attachment file name.
+          type: string
+        filesize:
+          description: Attachment file size in bytes.
+          type:
+          - integer
+          nullable: true
+        exif_orientation:
+          description: EXIF orientation value. Values 1-8 follow the EXIF specification, where 1 means
+            no rotation needed.
+          type: integer
+        image_quality:
+          description: Encode quality (1-100) from the wp_editor_set_quality filter, resolved against
+            the output MIME type. The "default" value applies to the full-size image; "sizes" lists per-registered-size
+            overrides where the filtered value differs from "default".
+          type: object
+          properties:
+            default:
+              type: integer
+              minimum: 1
+              maximum: 100
+            sizes:
+              type: object
+              properties:
+                thumbnail:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                medium:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                medium_large:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                large:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                1536x1536:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                2048x2048:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                impeka-grve-large-rect-horizontal:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                impeka-grve-small-square:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                impeka-grve-small-rect-horizontal:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                impeka-grve-small-rect-vertical:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                impeka-grve-medium-square:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                impeka-grve-medium-rect-horizontal:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                impeka-grve-medium-rect-vertical:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                impeka-grve-fullscreen:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+        image_output_format:
+          description: The output MIME type this image should be converted to, based on the image_editor_output_format
+            filter. Null if no conversion is needed.
+          type:
+          - string
+          nullable: true
+        image_save_progressive:
+          description: Whether to use progressive/interlaced encoding when saving this image.
+          type: boolean
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords (HTTP Basic). Declared by this site at GET /wp-json/
+        under authentication.application-passwords. Required only for authenticated scopes and write operations;
+        every operation described in this document is readable anonymously.
+security:
+- {}
+- applicationPassword: []
+x-provenance:
+  generated: '2026-08-30'
+  method: derived
+  source: https://tokamakenergy.com/wp-json/ (route descriptors) + OPTIONS on each collection route (item
+    schemas), probed 2026-08-30
+  note: Derived by API Evangelist from the WordPress REST API descriptors this site publishes at its own
+    /wp-json/ root. Parameters, types, enums, defaults and item schemas are the values WordPress itself
+    reports for this host; response examples are verbatim live captures. Tokamak Energy does not publish
+    an OpenAPI document of its own.

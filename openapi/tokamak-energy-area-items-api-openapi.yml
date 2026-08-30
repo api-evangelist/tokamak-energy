@@ -1,0 +1,599 @@
+openapi: 3.1.0
+info:
+  title: Tokamak Energy Area Items API
+  version: wp/v2
+  description: Public, unauthenticated read access to the site-specific "area-item" custom post type behind
+    tokamakenergy.com — the structured content blocks Tokamak Energy uses to compose its technology, careers
+    and about areas. Verified live at 27 items on 2026-08-30. This is a bespoke content type registered
+    by this site, not part of WordPress core.
+  contact:
+    name: Tokamak Energy
+    url: https://tokamakenergy.com/contact-us/
+  x-derived-from: Live WordPress REST API route descriptors and OPTIONS item schemas served by https://tokamakenergy.com/wp-json/
+    (probed 2026-08-30).
+servers:
+- url: https://tokamakenergy.com/wp-json
+  description: Tokamak Energy WordPress REST API
+tags:
+- name: Area Items
+  description: Public, unauthenticated read access to the site-specific "area-item" custom post type behind
+    tokamakenergy.com — the structured content blocks Tokamak Energy uses to compose its technology, careers
+    an
+paths:
+  /wp/v2/area-item:
+    get:
+      operationId: listAreaItems
+      summary: List area items
+      description: Returns a paginated collection of area items published on tokamakenergy.com. Anonymous,
+        read-only. Probed live 2026-08-30 (27 items).
+      tags:
+      - Area Items
+      parameters:
+      - name: context
+        in: query
+        description: Scope under which the request is made; determines fields present in response.
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: page
+        in: query
+        description: Current page of the collection.
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: per_page
+        in: query
+        description: Maximum number of items to be returned in result set.
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 10
+      - name: search
+        in: query
+        description: Limit results to those matching a string.
+        required: false
+        schema:
+          type: string
+      - name: after
+        in: query
+        description: Limit response to posts published after a given ISO8601 compliant date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: modified_after
+        in: query
+        description: Limit response to posts modified after a given ISO8601 compliant date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: author
+        in: query
+        description: Limit result set to posts assigned to specific authors.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: author_exclude
+        in: query
+        description: Ensure result set excludes posts assigned to specific authors.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: before
+        in: query
+        description: Limit response to posts published before a given ISO8601 compliant date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: modified_before
+        in: query
+        description: Limit response to posts modified before a given ISO8601 compliant date.
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: exclude
+        in: query
+        description: Ensure result set excludes specific IDs.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: include
+        in: query
+        description: Limit result set to specific IDs.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: search_semantics
+        in: query
+        description: How to interpret the search input.
+        required: false
+        schema:
+          type: string
+          enum:
+          - exact
+      - name: offset
+        in: query
+        description: Offset the result set by a specific number of items.
+        required: false
+        schema:
+          type: integer
+      - name: order
+        in: query
+        description: Order sort attribute ascending or descending.
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      - name: orderby
+        in: query
+        description: Sort collection by post attribute.
+        required: false
+        schema:
+          type: string
+          enum:
+          - author
+          - date
+          - id
+          - include
+          - modified
+          - parent
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          default: date
+      - name: search_columns
+        in: query
+        description: Array of column names to be searched.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            enum:
+            - post_title
+            - post_content
+            - post_excerpt
+            type: string
+      - name: slug
+        in: query
+        description: Limit result set to posts with one or more specific slugs.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: status
+        in: query
+        description: Limit result set to posts assigned one or more statuses.
+        required: false
+        schema:
+          type: array
+          default: publish
+          items:
+            enum:
+            - publish
+            - future
+            - draft
+            - pending
+            - private
+            - trash
+            - auto-draft
+            - inherit
+            - request-pending
+            - request-confirmed
+            - request-failed
+            - request-completed
+            - dp-rewrite-republish
+            - any
+            type: string
+      responses:
+        '200':
+          description: A page of area items.
+          headers:
+            X-WP-Total:
+              description: Total number of items in the collection.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total number of pages available at the current per_page value.
+              schema:
+                type: integer
+            Link:
+              description: RFC 8288 pagination links (rel="next" / rel="prev").
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AreaItem'
+              example:
+              - id: 9244
+                date: '2026-04-14T11:19:20'
+                date_gmt: '2026-04-14T10:19:20'
+                guid:
+                  rendered: https://tokamakenergy.com/?post_type=area-item&#038;p=9244
+                modified: '2026-04-14T12:24:18'
+                modified_gmt: '2026-04-14T11:24:18'
+                slug: annnouncement
+                status: publish
+                type: area-item
+                link: https://tokamakenergy.com/area-item/annnouncement/
+                title:
+                  rendered: Annnouncement
+                content:
+                  rendered: '<p>[vc_row rc_heading_color=&#8221;white&#8221; rc_link_color=&#8221;white&#8221;
+                    rc_link_hover_color=&#8221;black&#8221; rc_bg_type=&#8221;color&#8221; rc_font_color=&#8221;#ffffff&#8221;
+                    rc_bg_color=&#8221;#f18423&#8243;][vc_column text_align=&#8221;center&#8221; grve_css=&#8221;{&#8220;desktop&#8220;:{&#8220;padding-right&#8220;:&#8220;30px&#8220;,&#8220;padding-left&#8220;:&#8220;30px&#8220;,&#8220;class&#8220;:&#8220;grve-wpb-1776162749932&#8220;}}&#8221;]<h3
+                    class="grve-element grve-title grve-align-inherit grve-h3"><span><br>
+
+                    <h3 style="text-align: center;"><a href="https://tokamakenerg … [truncated by API
+                    Evangelist for readability; full value returned by the live API]'
+                  protected: false
+                excerpt:
+                  rendered: '<p>[vc_row rc_heading_color=&#8221;white&#8221; rc_link_color=&#8221;white&#8221;
+                    rc_link_hover_color=&#8221;black&#8221; rc_bg_type=&#8221;color&#8221; rc_font_color=&#8221;#ffffff&#8221;
+                    rc_bg_color=&#8221;#f18423&#8243;][vc_column text_align=&#8221;center&#8221; grve_css=&#8221;{&#8220;desktop&#8220;:{&#8220;padding-right&#8220;:&#8220;30px&#8220;,&#8220;padding-left&#8220;:&#8220;30px&#8220;,&#8220;class&#8220;:&#8220;grve-wpb-1776162749932&#8220;}}&#8221;][/vc_column][/vc_row]</p>
+
+                    '
+                  protected: false
+                author: 1
+                featured_media: 0
+                template: ''
+                class_list:
+                - post-9244
+                - area-item
+                - type-area-item
+                - status-publish
+                - hentry
+                - grve-isotope-item
+                yoast_head: '<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/
+                  -->
+
+                  <title>Annnouncement - Tokamak Energy</title>
+
+                  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large,
+                  max-video-preview:-1" />
+
+                  <link rel="canonical" href="https://tokamakenergy.com/area-item/annnouncement/" />
+
+                  <meta property="og:locale" content="en_GB" />
+
+                  <meta property="og:type" content="article" />
+
+                  <meta property="og:title" content="Annnouncement - Tokamak Energy" />
+
+                  <meta property="og:description" content="[vc_row rc_heading_color=&#8221;white&#8221;  …
+                  [truncated by API Evangelist for readability; full value returned by the live API]'
+                yoast_head_json:
+                  title: Annnouncement - Tokamak Energy
+                  robots:
+                    index: index
+                    follow: follow
+                    max-snippet: max-snippet:-1
+                    max-image-preview: max-image-preview:large
+                    max-video-preview: max-video-preview:-1
+                  canonical: https://tokamakenergy.com/area-item/annnouncement/
+                  og_locale: en_GB
+                  og_type: article
+                  og_title: Annnouncement - Tokamak Energy
+                  og_description: '[vc_row rc_heading_color=&#8221;white&#8221; rc_link_color=&#8221;white&#8221;
+                    rc_link_hover_color=&#8221;black&#8221; rc_bg_type=&#8221;color&#8221; rc_font_color=&#8221;#ffffff&#8221;
+                    rc_bg_color=&#8221;#f18423&#8243;][vc_column text_align=&#8221;center&#8221; grve_css=&#8221;{&#8220;desktop&#8220;:{&#8220;padding-right&#8220;:&#8220;30px&#8220;,&#8220;padding-left&#8220;:&#8220;30px&#8220;,&#8220;class&#8220;:&#8220;grve-wpb-1776162749932&#8220;}}&#8221;][/vc_column][/vc_row]'
+                  og_url: https://tokamakenergy.com/area-item/annnouncement/
+                  og_site_name: Tokamak Energy
+                  article_modified_time: '2026-04-14T11:24:18+00:00'
+                  twitter_card: summary_large_image
+                  twitter_site: '@TokamakEnergy'
+                  twitter_misc:
+                    Estimated reading time: 1 minute
+                  schema:
+                    '@context': https://schema.org
+                    '@graph':
+                    - '@type': WebPage
+                      '@id': https://tokamakenergy.com/area-item/annnouncement/
+                      url: https://tokamakenergy.com/area-item/annnouncement/
+                      name: Annnouncement - Tokamak Energy
+                      isPartOf:
+                        '@id': https://tokamakenergy.com/#website
+                      datePublished: '2026-04-14T10:19:20+00:00'
+                      dateModified: '2026-04-14T11:24:18+00:00'
+                      breadcrumb:
+                        '@id': https://tokamakenergy.com/area-item/annnouncement/#breadcrumb
+                      inLanguage: en-GB
+                      potentialAction:
+                      - '@type': ReadAction
+                        target:
+                        - https://tokamakenergy.com/area-item/annnouncement/
+                    - '@type': BreadcrumbList
+                      '@id': https://tokamakenergy.com/area-item/annnouncement/#breadcrumb
+                      itemListElement:
+                      - '@type': ListItem
+                        position: 1
+                        name: Home
+                        item: https://tokamakenergy.com/
+                      - '@type': ListItem
+                        position: 2
+                        name: Annnouncement
+                    - '@type': WebSite
+                      '@id': https://tokamakenergy.com/#website
+                      url: https://tokamakenergy.com/
+                      name: Tokamak Energy
+                      description: Ensuring energy security for all
+                      publisher:
+                        '@id': https://tokamakenergy.com/#organization
+                      potentialAction:
+                      - '@type': SearchAction
+                        target:
+                          '@type': EntryPoint
+                          urlTemplate: https://tokamakenergy.com/?s={search_term_string}
+                        query-input:
+                          '@type': PropertyValueSpecification
+                          valueRequired: true
+                          valueName: search_term_string
+                      inLanguage: en-GB
+                    - '@type': Organization
+                      '@id': https://tokamakenergy.com/#organization
+                      name: Tokamak Energy
+                      url: https://tokamakenergy.com/
+                      logo:
+                        '@type': ImageObject
+                        inLanguage: en-GB
+                        '@id': https://tokamakenergy.com/#/schema/logo/image/
+                        url: https://www.tokamakenergy.co.uk/wp-content/uploads/2022/09/tokamak_logo.png
+                        contentUrl: https://www.tokamakenergy.co.uk/wp-content/uploads/2022/09/tokamak_logo.png
+                        width: 2000
+                        height: 485
+                        caption: Tokamak Energy
+                      image:
+                        '@id': https://tokamakenergy.com/#/schema/logo/image/
+                      sameAs:
+                      - https://x.com/TokamakEnergy
+                      - https://www.instagram.com/tokamakenergy/
+                      - https://www.linkedin.com/company/tokamak-energy-ltd
+                      - https://www.youtube.com/channel/UCuSlFJbBUIj1zfJLRnGXSow
+        '400':
+          description: Bad request — an invalid parameter value was supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+  /wp/v2/area-item/{id}:
+    get:
+      operationId: getAreaItem
+      summary: Retrieve a area item
+      description: Returns a single area item by its numeric identifier. Anonymous, read-only.
+      tags:
+      - Area Items
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique numeric identifier for the area item.
+        schema:
+          type: integer
+      - name: context
+        in: query
+        description: Scope under which the request is made; determines fields present in response.
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: excerpt_length
+        in: query
+        description: Override the default excerpt length.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: The requested area item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AreaItem'
+        '400':
+          description: Bad request — an invalid parameter value was supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: Not found — no item exists with the supplied identifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+components:
+  schemas:
+    WPError:
+      type: object
+      title: WPError
+      description: WordPress REST API error envelope, observed live on this host.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_post_invalid_id or rest_forbidden.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          description: Error data.
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+      required:
+      - code
+      - message
+    AreaItem:
+      title: area-item
+      type: object
+      properties:
+        date:
+          description: The date the post was published, in the site's time zone.
+          type:
+          - string
+          nullable: true
+          format: date-time
+        date_gmt:
+          description: The date the post was published, as GMT.
+          type:
+          - string
+          nullable: true
+          format: date-time
+        guid:
+          description: The globally unique identifier for the post.
+          type: object
+          properties:
+            raw:
+              description: GUID for the post, as it exists in the database.
+              type: string
+            rendered:
+              description: GUID for the post, transformed for display.
+              type: string
+        id:
+          description: Unique identifier for the post.
+          type: integer
+        link:
+          description: URL to the post.
+          type: string
+          format: uri
+        modified:
+          description: The date the post was last modified, in the site's time zone.
+          type: string
+          format: date-time
+        modified_gmt:
+          description: The date the post was last modified, as GMT.
+          type: string
+          format: date-time
+        slug:
+          description: An alphanumeric identifier for the post unique to its type.
+          type: string
+        status:
+          description: A named status for the object.
+          type: string
+          enum:
+          - publish
+          - future
+          - draft
+          - pending
+          - private
+        type:
+          description: Type of post.
+          type: string
+        password:
+          description: A password to protect access to the content and excerpt.
+          type: string
+        permalink_template:
+          description: Permalink template for the post.
+          type: string
+        generated_slug:
+          description: Slug automatically generated from the post title.
+          type: string
+        class_list:
+          description: An array of the class names for the post container element.
+          type: array
+          items:
+            type: string
+        title:
+          description: The title for the post.
+          type: object
+          properties:
+            raw:
+              description: Title for the object, as it exists in the database.
+              type: string
+            rendered:
+              description: HTML title for the object, transformed for display.
+              type: string
+        content:
+          description: The content for the post.
+          type: object
+          properties:
+            raw:
+              description: Content for the post, as it exists in the database.
+              type: string
+            rendered:
+              description: HTML content for the post, transformed for display.
+              type: string
+            block_version:
+              description: Version of the content block format used by the post.
+              type: integer
+            protected:
+              description: Whether the content is protected with a password.
+              type: boolean
+        author:
+          description: The ID for the author of the post.
+          type: integer
+        excerpt:
+          description: The excerpt for the post.
+          type: object
+          properties:
+            raw:
+              description: Excerpt for the post, as it exists in the database.
+              type: string
+            rendered:
+              description: HTML excerpt for the post, transformed for display.
+              type: string
+            protected:
+              description: Whether the excerpt is protected with a password.
+              type: boolean
+        featured_media:
+          description: The ID of the featured media for the post.
+          type: integer
+        template:
+          description: The theme file to use to display the post.
+          type: string
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords (HTTP Basic). Declared by this site at GET /wp-json/
+        under authentication.application-passwords. Required only for authenticated scopes and write operations;
+        every operation described in this document is readable anonymously.
+security:
+- {}
+- applicationPassword: []
+x-provenance:
+  generated: '2026-08-30'
+  method: derived
+  source: https://tokamakenergy.com/wp-json/ (route descriptors) + OPTIONS on each collection route (item
+    schemas), probed 2026-08-30
+  note: Derived by API Evangelist from the WordPress REST API descriptors this site publishes at its own
+    /wp-json/ root. Parameters, types, enums, defaults and item schemas are the values WordPress itself
+    reports for this host; response examples are verbatim live captures. Tokamak Energy does not publish
+    an OpenAPI document of its own.

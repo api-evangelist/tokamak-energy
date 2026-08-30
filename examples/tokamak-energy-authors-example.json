@@ -1,0 +1,147 @@
+{
+  "x-provenance": {
+    "generated": "2026-08-30",
+    "method": "probed",
+    "source": "https://tokamakenergy.com/wp-json/wp/v2/users?per_page=1",
+    "note": "Verbatim live response captured anonymously from the Tokamak Energy WordPress REST API. _links removed and string values longer than 600 characters truncated with an explicit marker; no value was altered otherwise."
+  },
+  "response": [
+    {
+      "id": 2,
+      "name": "jacquireid",
+      "url": "",
+      "description": "",
+      "link": "https://tokamakenergy.com/author/jacquireid/",
+      "slug": "jacquireid",
+      "meta": [],
+      "yoast_head": "<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/ -->\n<title>jacquireid, Author at Tokamak Energy</title>\n<meta name=\"robots\" content=\"index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\" />\n<link rel=\"canonical\" href=\"https://tokamakenergy.com/author/jacquireid/\" />\n<meta property=\"og:locale\" content=\"en_GB\" />\n<meta property=\"og:type\" content=\"profile\" />\n<meta property=\"og:title\" content=\"jacquireid, Author at Tokamak Energy\" />\n<meta property=\"og:url\" content=\"https://tokamakenergy.com/author/jacquireid/\" / \u2026 [truncated by API Evangelist for readability; full value returned by the live API]",
+      "yoast_head_json": {
+        "title": "jacquireid, Author at Tokamak Energy",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "canonical": "https://tokamakenergy.com/author/jacquireid/",
+        "og_locale": "en_GB",
+        "og_type": "profile",
+        "og_title": "jacquireid, Author at Tokamak Energy",
+        "og_url": "https://tokamakenergy.com/author/jacquireid/",
+        "og_site_name": "Tokamak Energy",
+        "og_image": [
+          {
+            "url": "https://secure.gravatar.com/avatar/2c1c7e22ddb9ee63e51e372ad859fa2e?s=500&d=mm&r=g",
+            "type": "",
+            "width": "",
+            "height": ""
+          }
+        ],
+        "twitter_card": "summary_large_image",
+        "twitter_site": "@TokamakEnergy",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "ProfilePage",
+              "@id": "https://tokamakenergy.com/author/jacquireid/",
+              "url": "https://tokamakenergy.com/author/jacquireid/",
+              "name": "jacquireid, Author at Tokamak Energy",
+              "isPartOf": {
+                "@id": "https://tokamakenergy.com/#website"
+              },
+              "breadcrumb": {
+                "@id": "https://tokamakenergy.com/author/jacquireid/#breadcrumb"
+              },
+              "inLanguage": "en-GB",
+              "potentialAction": [
+                {
+                  "@type": "ReadAction",
+                  "target": [
+                    "https://tokamakenergy.com/author/jacquireid/"
+                  ]
+                }
+              ]
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://tokamakenergy.com/author/jacquireid/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://tokamakenergy.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Archives for jacquireid"
+                }
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://tokamakenergy.com/#website",
+              "url": "https://tokamakenergy.com/",
+              "name": "Tokamak Energy",
+              "description": "Ensuring energy security for all",
+              "publisher": {
+                "@id": "https://tokamakenergy.com/#organization"
+              },
+              "potentialAction": [
+                {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://tokamakenergy.com/?s={search_term_string}"
+                  },
+                  "query-input": {
+                    "@type": "PropertyValueSpecification",
+                    "valueRequired": true,
+                    "valueName": "search_term_string"
+                  }
+                }
+              ],
+              "inLanguage": "en-GB"
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://tokamakenergy.com/#organization",
+              "name": "Tokamak Energy",
+              "url": "https://tokamakenergy.com/",
+              "logo": {
+                "@type": "ImageObject",
+                "inLanguage": "en-GB",
+                "@id": "https://tokamakenergy.com/#/schema/logo/image/",
+                "url": "https://www.tokamakenergy.co.uk/wp-content/uploads/2022/09/tokamak_logo.png",
+                "contentUrl": "https://www.tokamakenergy.co.uk/wp-content/uploads/2022/09/tokamak_logo.png",
+                "width": 2000,
+                "height": 485,
+                "caption": "Tokamak Energy"
+              },
+              "image": {
+                "@id": "https://tokamakenergy.com/#/schema/logo/image/"
+              },
+              "sameAs": [
+                "https://x.com/TokamakEnergy",
+                "https://www.instagram.com/tokamakenergy/",
+                "https://www.linkedin.com/company/tokamak-energy-ltd",
+                "https://www.youtube.com/channel/UCuSlFJbBUIj1zfJLRnGXSow"
+              ]
+            },
+            {
+              "@type": "Person",
+              "@id": "https://tokamakenergy.com/#/schema/person/0597161b33872df4f0081ca9e871160f",
+              "name": "jacquireid",
+              "mainEntityOfPage": {
+                "@id": "https://tokamakenergy.com/author/jacquireid/"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

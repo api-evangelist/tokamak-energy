@@ -1,0 +1,73 @@
+generated: '2026-08-30'
+method: probed
+source: Live error responses observed on https://tokamakenergy.com/wp-json/ (2026-08-30) plus the 4xx
+  responses declared in the nine openapi/ documents in this repository
+format: wp-error
+rfc9457: false
+note: 'This API does NOT use RFC 9457 problem+json. It returns the WordPress core error envelope as application/json:
+  a flat object of code, message and data.status. An agent should branch on the string `code`, which is
+  stable across WordPress releases, rather than on `message`, which is localised to the site language
+  (en-GB here).'
+envelope:
+  media_type: application/json
+  fields:
+  - name: code
+    type: string
+    description: Stable machine-readable error identifier.
+  - name: message
+    type: string
+    description: Human-readable, localised message. Not stable — do not match on it.
+  - name: data
+    type: object
+    description: Error data object.
+  - name: data.status
+    type: integer
+    description: HTTP status code, repeated inside the body.
+  example:
+    code: rest_post_invalid_id
+    message: Invalid post ID.
+    data:
+      status: 404
+problem_types:
+- code: rest_post_invalid_id
+  status: 404
+  title: Invalid post ID
+  detail: No object of the requested type exists with the supplied numeric identifier.
+  remediation: List the collection first and use an id returned by it. Ids are not guessable and are not
+    reused predictably.
+  observed: GET https://tokamakenergy.com/wp-json/wp/v2/posts/999999999 -> 404
+  method: probed
+- code: rest_forbidden
+  status: 401
+  title: Not allowed
+  detail: The requested resource or scope requires authentication. Returned for the settings route and
+    for the wp-abilities/v1 namespace.
+  remediation: These routes are not part of the anonymous surface. Do not retry — obtain an operator Application
+    Password, or use the anonymous read routes profiled in this repository instead.
+  observed: GET https://tokamakenergy.com/wp-json/wp/v2/settings -> 401; GET /wp-json/wp-abilities/v1/abilities
+    -> 401
+  method: probed
+- code: rest_forbidden_context
+  status: 403
+  title: Forbidden context
+  detail: Returned where the site does not expose a collection anonymously at all. Observed on the comments
+    collection, which is closed on this site.
+  remediation: Treat as a permanent absence for anonymous callers, not a transient failure.
+  observed: GET https://tokamakenergy.com/wp-json/wp/v2/comments -> 403
+  method: probed
+- code: rest_invalid_param
+  status: 400
+  title: Invalid parameter
+  detail: A query parameter failed the type, enum, minimum or maximum constraint WordPress declares for
+    it in the route descriptor.
+  remediation: Read the constraint from GET /wp-json/ (or the derived OpenAPI in openapi/) — per_page
+    maxes at 100, page has a minimum of 1, and context is one of view, embed, edit.
+  method: derived
+  source: route descriptors at https://tokamakenergy.com/wp-json/
+- code: rest_no_route
+  status: 404
+  title: No route
+  detail: The requested path is not a registered REST route on this host.
+  remediation: Enumerate the live route table at GET /wp-json/ rather than assuming a path.
+  method: derived
+  source: route descriptors at https://tokamakenergy.com/wp-json/

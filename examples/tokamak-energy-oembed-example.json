@@ -1,0 +1,24 @@
+{
+  "x-provenance": {
+    "generated": "2026-08-30",
+    "method": "probed",
+    "source": "https://tokamakenergy.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ftokamakenergy.com%2Fabout-us%2F",
+    "note": "Verbatim live response captured anonymously from the Tokamak Energy WordPress REST API. _links removed and string values longer than 600 characters truncated with an explicit marker; no value was altered otherwise."
+  },
+  "response": {
+    "version": "1.0",
+    "provider_name": "Tokamak Energy",
+    "provider_url": "https://tokamakenergy.com",
+    "author_name": "martinp",
+    "author_url": "https://tokamakenergy.com/author/martinp/",
+    "title": "fusion energy and high temperature superconducting magnets - Tokamak Energy",
+    "type": "rich",
+    "width": 600,
+    "height": 338,
+    "html": "<blockquote class=\"wp-embedded-content\" data-secret=\"boI2LP4kCC\"><a href=\"https://tokamakenergy.com/about-us/\">About us</a></blockquote><iframe sandbox=\"allow-scripts\" security=\"restricted\" src=\"https://tokamakenergy.com/about-us/embed/#?secret=boI2LP4kCC\" width=\"600\" height=\"338\" title=\"&#8220;About us&#8221; &#8212; Tokamak Energy\" data-secret=\"boI2LP4kCC\" frameborder=\"0\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\" class=\"wp-embedded-content\"></iframe><script>\n/*! This file is auto-generated */\n!function(d,l){\"use strict\";l.querySelector&&d.addEventListener&&\"undefined\"!=typeof URL&&(d.w \u2026 [truncated by API Evangelist for readability; full value returned by the live API]",
+    "thumbnail_url": "https://tokamakenergy.com/wp-content/uploads/2023/11/about-tokamak-hero-image.jpg",
+    "thumbnail_width": 2500,
+    "thumbnail_height": 1581,
+    "description": "Commercialising superconducting and fusion energy technologies - From fusion innovation to commercial impact"
+  }
+}

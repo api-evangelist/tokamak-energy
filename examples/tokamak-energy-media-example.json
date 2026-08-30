@@ -1,0 +1,127 @@
+{
+  "x-provenance": {
+    "generated": "2026-08-30",
+    "method": "probed",
+    "source": "https://tokamakenergy.com/wp-json/wp/v2/media?per_page=1",
+    "note": "Verbatim live response captured anonymously from the Tokamak Energy WordPress REST API. _links removed and string values longer than 600 characters truncated with an explicit marker; no value was altered otherwise."
+  },
+  "response": [
+    {
+      "id": 9988,
+      "date": "2026-08-21T17:01:59",
+      "date_gmt": "2026-08-21T16:01:59",
+      "guid": {
+        "rendered": "https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142.jpg"
+      },
+      "modified": "2026-08-21T17:01:59",
+      "modified_gmt": "2026-08-21T16:01:59",
+      "slug": "st-e1-full-bioshield-scene-v2-142",
+      "status": "inherit",
+      "type": "attachment",
+      "link": "https://tokamakenergy.com/st-e1-full-bioshield-scene-v2-142/",
+      "title": {
+        "rendered": "ST-E1 Full Bioshield Scene V2.142"
+      },
+      "author": 5,
+      "featured_media": 0,
+      "comment_status": "closed",
+      "ping_status": "closed",
+      "template": "",
+      "meta": {
+        "inline_featured_image": false
+      },
+      "class_list": [
+        "post-9988",
+        "attachment",
+        "type-attachment",
+        "status-inherit",
+        "hentry",
+        "grve-isotope-item"
+      ],
+      "description": {
+        "rendered": "<p class=\"attachment\"><a href='https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-scaled.jpg'><img loading=\"lazy\" decoding=\"async\" width=\"300\" height=\"188\" src=\"https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-300x188.jpg\" class=\"attachment-medium size-medium\" alt=\"\" srcset=\"https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-300x188.jpg 300w, https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-1024x640.jpg 1024w, https://tokamakenergy.com/wp-content/u \u2026 [truncated by API Evangelist for readability; full value returned by the live API]"
+      },
+      "caption": {
+        "rendered": ""
+      },
+      "alt_text": "",
+      "media_type": "image",
+      "mime_type": "image/jpeg",
+      "media_details": {
+        "width": 2560,
+        "height": 1600,
+        "file": "2026/08/ST-E1-Full-Bioshield-Scene-V2.142-scaled.jpg",
+        "filesize": 461320,
+        "sizes": {
+          "medium": {
+            "file": "ST-E1-Full-Bioshield-Scene-V2.142-300x188.jpg",
+            "width": 300,
+            "height": 188,
+            "filesize": 13367,
+            "mime_type": "image/jpeg",
+            "source_url": "https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-300x188.jpg"
+          },
+          "large": {
+            "file": "ST-E1-Full-Bioshield-Scene-V2.142-1024x640.jpg",
+            "width": 1024,
+            "height": 640,
+            "filesize": 104229,
+            "mime_type": "image/jpeg",
+            "source_url": "https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-1024x640.jpg"
+          },
+          "thumbnail": {
+            "file": "ST-E1-Full-Bioshield-Scene-V2.142-150x150.jpg",
+            "width": 150,
+            "height": 150,
+            "filesize": 6484,
+            "mime_type": "image/jpeg",
+            "source_url": "https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-150x150.jpg"
+          },
+          "medium_large": {
+            "file": "ST-E1-Full-Bioshield-Scene-V2.142-768x480.jpg",
+            "width": 768,
+            "height": 480,
+            "filesize": 63848,
+            "mime_type": "image/jpeg",
+            "source_url": "https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-768x480.jpg"
+          },
+          "1536x1536": {
+            "file": "ST-E1-Full-Bioshield-Scene-V2.142-1536x960.jpg",
+            "width": 1536,
+            "height": 960,
+            "filesize": 205301,
+            "mime_type": "image/jpeg",
+            "source_url": "https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-1536x960.jpg"
+          },
+          "full": {
+            "file": "ST-E1-Full-Bioshield-Scene-V2.142-scaled.jpg",
+            "width": 2560,
+            "height": 1600,
+            "mime_type": "image/jpeg",
+            "source_url": "https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-scaled.jpg"
+          }
+        },
+        "image_meta": {
+          "aperture": "0",
+          "credit": "",
+          "camera": "",
+          "caption": "",
+          "created_timestamp": "0",
+          "copyright": "",
+          "focal_length": "0",
+          "iso": "0",
+          "shutter_speed": "0",
+          "title": "",
+          "orientation": "0",
+          "keywords": [],
+          "alt": ""
+        },
+        "original_image": "ST-E1-Full-Bioshield-Scene-V2.142.jpg"
+      },
+      "post": null,
+      "source_url": "https://tokamakenergy.com/wp-content/uploads/2026/08/ST-E1-Full-Bioshield-Scene-V2.142-scaled.jpg",
+      "filename": "ST-E1-Full-Bioshield-Scene-V2.142.jpg",
+      "filesize": 461320
+    }
+  ]
+}

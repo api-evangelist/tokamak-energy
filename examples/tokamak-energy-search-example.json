@@ -1,0 +1,31 @@
+{
+  "x-provenance": {
+    "generated": "2026-08-30",
+    "method": "probed",
+    "source": "https://tokamakenergy.com/wp-json/wp/v2/search?search=fusion&per_page=3",
+    "note": "Verbatim live response captured anonymously from the Tokamak Energy WordPress REST API. _links removed and string values longer than 600 characters truncated with an explicit marker; no value was altered otherwise."
+  },
+  "response": [
+    {
+      "id": 9774,
+      "title": "Tokamak Energy&#8217;s &#8216;Focus Collection&#8217; featured in prestigious Nuclear Fusion journal",
+      "url": "https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/",
+      "type": "post",
+      "subtype": "post"
+    },
+    {
+      "id": 9757,
+      "title": "Fusion power plant heating system passes Tokamak Energy site tests",
+      "url": "https://tokamakenergy.com/2026/07/29/power-plant-heating-system-passes-tokamak-energy-site-testing/",
+      "type": "post",
+      "subtype": "post"
+    },
+    {
+      "id": 9320,
+      "title": "Tokamak Energy\u2019s fusion control room recreated for new Lancaster University student nuclear simulator",
+      "url": "https://tokamakenergy.com/2026/06/16/tokamak-energys-fusion-control-room-recreated-for-new-lancaster-university-student-nuclear-simulator/",
+      "type": "post",
+      "subtype": "post"
+    }
+  ]
+}

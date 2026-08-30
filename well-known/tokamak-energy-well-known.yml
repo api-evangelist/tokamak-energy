@@ -1,0 +1,43 @@
+generated: '2026-08-30'
+method: probed
+source: Direct HTTP probe of https://tokamakenergy.com/.well-known/* on 2026-08-30
+note: 'tokamakenergy.com serves no /.well-known/ documents. Every path below returned HTTP 404 with the
+  site''s WordPress HTML 404 page, not a document. No WellKnown or SecurityTxt pointer is emitted in apis.yml,
+  because this file records an absence rather than a presence. tokamakenergy.com is the only host in scope:
+  the API base host and the website host are the same, and no api./developer./docs./data. subdomain resolves
+  in DNS.'
+hosts:
+- host: tokamakenergy.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+    note: 404 — WordPress HTML 404 page, no document served.
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+    note: 404 — WordPress HTML 404 page, no document served.
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+    note: 404 — WordPress HTML 404 page, no document served.
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+    note: 404 — WordPress HTML 404 page, no document served.
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+    note: 404 — WordPress HTML 404 page, no document served.
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+    note: 404 — WordPress HTML 404 page, no document served.
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+    note: 404 — WordPress HTML 404 page, no document served.
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+    note: 404 — WordPress HTML 404 page, no document served.

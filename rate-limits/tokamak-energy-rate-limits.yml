@@ -1,0 +1,25 @@
+generated: '2026-08-30'
+method: probed
+source: Live response headers observed on https://tokamakenergy.com/wp-json/wp/v2/* (2026-08-30) and a
+  search of tokamakenergy.com for a published limits policy
+limit_count: 0
+note: 'An honest zero. Tokamak Energy documents no rate limits and the API returns no rate-limit signal
+  of any kind. The full header set observed on a 200 was content-type, x-robots-tag, x-content-type-options,
+  access-control-expose-headers, access-control-allow-headers, x-wp-total, x-wp-totalpages, link, allow,
+  vary, date, alt-svc — no RateLimit-*, no X-RateLimit-*, no Retry-After. No RateLimits pointer is emitted
+  in apis.yml, because a pointer would assert a runtime signal that does not exist. An agent has no way
+  to discover a ceiling here except by hitting one, so it should self-throttle: robots.txt on this host
+  requests Crawl-delay: 2, which is the only pacing hint Tokamak Energy publishes anywhere.'
+rate_limits: []
+response_headers:
+  ratelimit_standard: null
+  x_ratelimit: null
+  retry_after: null
+  observed: false
+exhaustion_status: null
+related_signals:
+- source: https://tokamakenergy.com/robots.txt
+  status: 200
+  signal: 'Crawl-delay: 2'
+  note: A crawler-pacing directive for the HTML site, not an API rate limit, but it is the provider's
+    only published statement of acceptable request rate.

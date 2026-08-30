@@ -1,18 +1,301 @@
 aid: tokamak-energy
 name: Tokamak Energy
-description: 'Tokamak Energy is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Tokamak Energy is a private fusion energy company founded in 2009 as a spinout from the UK Atomic
+  Energy Authority, headquartered at 173 Brook Drive, Milton Park, Oxfordshire OX14 4SD, with
+  subsidiaries in the United States and Japan and more than 300 employees. It runs a two-track
+  strategy: advancing commercial fusion energy through compact spherical tokamaks, and developing
+  high temperature superconducting (HTS) magnet technology as a business in its own right. Its
+  flagship device ST40 is the world's highest field spherical tokamak and is undergoing a USD 52
+  million upgrade co-funded with the US Department of Energy and the UK Department for Energy
+  Security and Net Zero. Demo4 became the first HTS fusion magnet system to achieve fusion-relevant
+  magnetic fields in 2025, and the company was selected as Magnet Systems Partner for the UK's STEP
+  programme under a GBP 70 million contract running to 2029. The group is organised into three
+  integrated businesses — TE Magnetics (HTS technology, established 2024), Ridgway Machines
+  (manufacturing, acquired 2025) and Fusion. Tokamak Energy is a fusion and superconducting hardware
+  company rather than a software vendor: it publishes no commercial or developer-facing product API,
+  no developer portal, no SDKs and no OpenAPI of its own. The only machine-readable interface it
+  exposes publicly is the WordPress REST content API behind its corporate website at
+  tokamakenergy.com, which is anonymously readable, read-only for unauthenticated callers, and is
+  captured here for discovery purposes. Its public engineering output is instead released as
+  open-source plasma physics code — GSFit, RTGSFit and FORGE — through the tokamak-energy GitHub
+  organisation.
 url: https://raw.githubusercontent.com/api-evangelist/tokamak-energy/refs/heads/main/apis.yml
+image: https://tokamakenergy.com/wp-content/uploads/2025/03/TE_symbol_orange.svg
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-30'
 modified: '2026-08-30'
 tags:
 - Company
-apis: []
+- Fusion Energy
+- Energy
+- Superconductors
+- HTS Magnets
+- Advanced Manufacturing
+- Deep Tech
+- Plasma Physics
+- Scientific Computing
+- Research and Development
+- Content
+- United Kingdom
+apis:
+- aid: tokamak-energy:tokamak-energy-posts-api
+  name: Tokamak Energy Posts API
+  description: >-
+    Public, unauthenticated read access to the Tokamak Energy news archive behind
+    tokamakenergy.com/latest-news/ via the WordPress core REST API. Verified live at 84 published
+    posts on 2026-08-30.
+  humanURL: https://tokamakenergy.com/wp-json/
+  baseURL: https://tokamakenergy.com/wp-json
+  tags:
+  - Posts
+  - Content
+  - News
+  properties:
+  - type: OpenAPI
+    url: openapi/tokamak-energy-posts-api-openapi.yml
+  - type: Examples
+    url: examples/tokamak-energy-posts-example.json
+  - type: Overlay
+    url: overlays/tokamak-energy-posts-api-overlay.yaml
+  - type: Authentication
+    url: authentication/tokamak-energy-authentication.yml
+  - type: ErrorCatalog
+    url: errors/tokamak-energy-problem-types.yml
+  - type: Conventions
+    url: conventions/tokamak-energy-conventions.yml
+  - type: DataModel
+    url: data-model/tokamak-energy-data-model.yml
+  - type: Conformance
+    url: conformance/tokamak-energy-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/tokamak-energy-lifecycle.yml
+- aid: tokamak-energy:tokamak-energy-pages-api
+  name: Tokamak Energy Pages API
+  description: >-
+    Public, unauthenticated read access to the static pages of tokamakenergy.com — About Us, Our
+    Fusion Energy and HTS Technology, TE Magnetics, Careers, Early Careers, Current Vacancies, STEM
+    Outreach, Why Fusion, USA, Japan, Videos, Contact Us and Privacy. Verified live at 26 published
+    pages on 2026-08-30.
+  humanURL: https://tokamakenergy.com/wp-json/
+  baseURL: https://tokamakenergy.com/wp-json
+  tags:
+  - Pages
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/tokamak-energy-pages-api-openapi.yml
+  - type: Examples
+    url: examples/tokamak-energy-pages-example.json
+  - type: Overlay
+    url: overlays/tokamak-energy-pages-api-overlay.yaml
+  - type: Authentication
+    url: authentication/tokamak-energy-authentication.yml
+  - type: ErrorCatalog
+    url: errors/tokamak-energy-problem-types.yml
+  - type: Conventions
+    url: conventions/tokamak-energy-conventions.yml
+  - type: DataModel
+    url: data-model/tokamak-energy-data-model.yml
+  - type: Conformance
+    url: conformance/tokamak-energy-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/tokamak-energy-lifecycle.yml
+- aid: tokamak-energy:tokamak-energy-media-api
+  name: Tokamak Energy Media API
+  description: >-
+    Public, unauthenticated read access to the Tokamak Energy media library — images, diagrams, PDFs
+    and video assets attached to news posts and pages, including ST40, Demo4 and TE Magnetics
+    imagery. Verified live at 853 media items on 2026-08-30.
+  humanURL: https://tokamakenergy.com/wp-json/
+  baseURL: https://tokamakenergy.com/wp-json
+  tags:
+  - Media
+  - Content
+  - Images
+  properties:
+  - type: OpenAPI
+    url: openapi/tokamak-energy-media-api-openapi.yml
+  - type: Examples
+    url: examples/tokamak-energy-media-example.json
+  - type: Overlay
+    url: overlays/tokamak-energy-media-api-overlay.yaml
+  - type: Authentication
+    url: authentication/tokamak-energy-authentication.yml
+  - type: ErrorCatalog
+    url: errors/tokamak-energy-problem-types.yml
+  - type: Conventions
+    url: conventions/tokamak-energy-conventions.yml
+  - type: DataModel
+    url: data-model/tokamak-energy-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/tokamak-energy-lifecycle.yml
+- aid: tokamak-energy:tokamak-energy-area-items-api
+  name: Tokamak Energy Area Items API
+  description: >-
+    Public, unauthenticated read access to the site-specific `area-item` custom post type behind
+    tokamakenergy.com — the structured content blocks Tokamak Energy uses to compose its technology,
+    careers and about areas. Verified live at 27 items on 2026-08-30. This content type is
+    registered by Tokamak Energy's own site, not by WordPress core.
+  humanURL: https://tokamakenergy.com/wp-json/
+  baseURL: https://tokamakenergy.com/wp-json
+  tags:
+  - Area Items
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/tokamak-energy-area-items-api-openapi.yml
+  - type: Examples
+    url: examples/tokamak-energy-area-item-example.json
+  - type: Overlay
+    url: overlays/tokamak-energy-area-items-api-overlay.yaml
+  - type: Authentication
+    url: authentication/tokamak-energy-authentication.yml
+  - type: ErrorCatalog
+    url: errors/tokamak-energy-problem-types.yml
+  - type: Conventions
+    url: conventions/tokamak-energy-conventions.yml
+  - type: DataModel
+    url: data-model/tokamak-energy-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/tokamak-energy-lifecycle.yml
+- aid: tokamak-energy:tokamak-energy-taxonomy-api
+  name: Tokamak Energy Taxonomy API
+  description: >-
+    Public, unauthenticated read access to the classification terms Tokamak Energy applies to its
+    news archive — the category taxonomy (8 terms live on 2026-08-30) and the post tag taxonomy (0
+    terms live; registered and callable but currently unused).
+  humanURL: https://tokamakenergy.com/wp-json/
+  baseURL: https://tokamakenergy.com/wp-json
+  tags:
+  - Taxonomy
+  - Categories
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/tokamak-energy-taxonomy-api-openapi.yml
+  - type: Examples
+    url: examples/tokamak-energy-categories-example.json
+  - type: Overlay
+    url: overlays/tokamak-energy-taxonomy-api-overlay.yaml
+  - type: Authentication
+    url: authentication/tokamak-energy-authentication.yml
+  - type: ErrorCatalog
+    url: errors/tokamak-energy-problem-types.yml
+  - type: Conventions
+    url: conventions/tokamak-energy-conventions.yml
+  - type: DataModel
+    url: data-model/tokamak-energy-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/tokamak-energy-lifecycle.yml
+- aid: tokamak-energy:tokamak-energy-search-api
+  name: Tokamak Energy Search API
+  description: >-
+    Public, unauthenticated full-text search across every searchable object on tokamakenergy.com —
+    posts, pages and the area-item custom type — returning a lightweight result envelope (id, title,
+    url, type, subtype). Verified live at 137 searchable objects on 2026-08-30.
+  humanURL: https://tokamakenergy.com/wp-json/
+  baseURL: https://tokamakenergy.com/wp-json
+  tags:
+  - Search
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/tokamak-energy-search-api-openapi.yml
+  - type: Examples
+    url: examples/tokamak-energy-search-example.json
+  - type: Overlay
+    url: overlays/tokamak-energy-search-api-overlay.yaml
+  - type: Authentication
+    url: authentication/tokamak-energy-authentication.yml
+  - type: ErrorCatalog
+    url: errors/tokamak-energy-problem-types.yml
+  - type: Conventions
+    url: conventions/tokamak-energy-conventions.yml
+  - type: Lifecycle
+    url: lifecycle/tokamak-energy-lifecycle.yml
+- aid: tokamak-energy:tokamak-energy-authors-api
+  name: Tokamak Energy Authors API
+  description: >-
+    Public, unauthenticated read access to the post authors of the Tokamak Energy news archive.
+    Verified live at 4 authors on 2026-08-30. WordPress exposes only the public author view — name,
+    slug, description, avatar and archive link — anonymously; email addresses and roles require
+    authentication.
+  humanURL: https://tokamakenergy.com/wp-json/
+  baseURL: https://tokamakenergy.com/wp-json
+  tags:
+  - Authors
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/tokamak-energy-authors-api-openapi.yml
+  - type: Examples
+    url: examples/tokamak-energy-authors-example.json
+  - type: Overlay
+    url: overlays/tokamak-energy-authors-api-overlay.yaml
+  - type: Authentication
+    url: authentication/tokamak-energy-authentication.yml
+  - type: ErrorCatalog
+    url: errors/tokamak-energy-problem-types.yml
+  - type: Conventions
+    url: conventions/tokamak-energy-conventions.yml
+  - type: DataModel
+    url: data-model/tokamak-energy-data-model.yml
+- aid: tokamak-energy:tokamak-energy-discovery-api
+  name: Tokamak Energy Discovery API
+  description: >-
+    The machine-readable description of the Tokamak Energy content API itself — the REST root
+    document, the registered content types (including the site-specific `portfolio` and `area-item`
+    types), the registered taxonomies and the publication statuses. An agent can start at
+    GET /wp-json/ and reach every other operation in this profile without out-of-band knowledge.
+  humanURL: https://tokamakenergy.com/wp-json/
+  baseURL: https://tokamakenergy.com/wp-json
+  tags:
+  - Discovery
+  - Metadata
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/tokamak-energy-discovery-api-openapi.yml
+  - type: Examples
+    url: examples/tokamak-energy-types-example.json
+  - type: Overlay
+    url: overlays/tokamak-energy-discovery-api-overlay.yaml
+  - type: Authentication
+    url: authentication/tokamak-energy-authentication.yml
+  - type: ErrorCatalog
+    url: errors/tokamak-energy-problem-types.yml
+  - type: Conventions
+    url: conventions/tokamak-energy-conventions.yml
+  - type: Conformance
+    url: conformance/tokamak-energy-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/tokamak-energy-lifecycle.yml
+- aid: tokamak-energy:tokamak-energy-oembed-api
+  name: Tokamak Energy oEmbed API
+  description: >-
+    Public, unauthenticated oEmbed 1.0 provider endpoint for tokamakenergy.com. Given the URL of any
+    Tokamak Energy post or page it returns an oEmbed rich/link response suitable for embedding the
+    item in a third-party surface. Verified live on 2026-08-30.
+  humanURL: https://tokamakenergy.com/wp-json/
+  baseURL: https://tokamakenergy.com/wp-json
+  tags:
+  - oEmbed
+  - Embedding
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/tokamak-energy-oembed-api-openapi.yml
+  - type: Examples
+    url: examples/tokamak-energy-oembed-example.json
+  - type: Overlay
+    url: overlays/tokamak-energy-oembed-api-overlay.yaml
+  - type: Conformance
+    url: conformance/tokamak-energy-conformance.yml
+  - type: ErrorCatalog
+    url: errors/tokamak-energy-problem-types.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +303,68 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://www.hiive.com/securities/tokamak-energy-stock
+  url: https://tokamakenergy.com/
+- type: About
+  url: https://tokamakenergy.com/about-us/
+- type: Blog
+  url: https://tokamakenergy.com/latest-news/
+- type: BlogRSS
+  url: https://tokamakenergy.com/feed/
+- type: Support
+  url: https://tokamakenergy.com/contact-us/
+- type: PrivacyPolicy
+  url: https://tokamakenergy.com/privacy/
+- type: GitHubOrganization
+  url: https://github.com/tokamak-energy
+- type: Careers
+  url: https://tokamakenergy.com/careers-at-tokamak-energy-fusion-energy/
+- type: Technology
+  url: https://tokamakenergy.com/our-fusion-energy-and-hts-technology/
+- type: Videos
+  url: https://tokamakenergy.com/videos/
+- type: Authentication
+  url: authentication/tokamak-energy-authentication.yml
+- type: Conventions
+  url: conventions/tokamak-energy-conventions.yml
+- type: ErrorCatalog
+  url: errors/tokamak-energy-problem-types.yml
+- type: Conformance
+  url: conformance/tokamak-energy-conformance.yml
+- type: Lifecycle
+  url: lifecycle/tokamak-energy-lifecycle.yml
+- type: DataModel
+  url: data-model/tokamak-energy-data-model.yml
+- type: Packages
+  url: packages/tokamak-energy-packages.yml
+- type: LLMsTxt
+  url: llms/tokamak-energy-llms.txt
+- type: DomainSecurity
+  url: security/tokamak-energy-domain-security.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-08-30'
+  status: enriched
+  artifacts_added: 44
+  pass: local-v1
+x-coverage:
+  state: covered
+  reason: no-machine-readable-spec
+  detail: >-
+    Tokamak Energy publishes no product API, developer portal, SDK, MCP server or OpenAPI of its
+    own — it is a fusion and HTS magnet hardware company — but the profile is not thin: the
+    WordPress REST content API behind tokamakenergy.com is live, anonymous and fully describable,
+    and nine OpenAPI documents covering 22 operations were derived from the route descriptors and
+    OPTIONS item schemas the host itself publishes at /wp-json/.
+  evidence:
+  - url: https://tokamakenergy.com/wp-json/
+    status: 200
+  - url: https://tokamakenergy.com/openapi.json
+    status: 404
+  - url: https://tokamakenergy.com/.well-known/agent-card.json
+    status: 404
+  - url: https://tokamakenergy.com/.well-known/security.txt
+    status: 404
+  - url: https://pypi.org/pypi/gsfit/json
+    status: 200
+  checked: '2026-08-30'

@@ -1,0 +1,16 @@
+generated: '2026-08-30'
+method: searched
+source: https://tokamakenergy.com/ (site sitemap walked 2026-08-30; no pricing, plans, or developer-signup
+  page exists)
+plan_count: 0
+note: An honest zero. Tokamak Energy sells fusion technology, HTS magnets and manufacturing capacity under
+  negotiated contracts — the STEP magnet partnership is a GBP 70 million contract and the ST40 upgrade
+  a USD 52 million co-funded programme — not as a priced API product. There is no pricing page, no plans
+  page, no developer signup and no metered API offer anywhere on tokamakenergy.com. The content API profiled
+  in this repository is free and anonymous because it is incidental to the corporate website, not because
+  it is a free tier of anything. No Plans or Pricing pointer is emitted in apis.yml.
+plans: []
+evidence:
+- url: https://tokamakenergy.com/page-sitemap.xml
+  status: 200
+  detail: The complete page sitemap contains 22 URLs. None is a pricing, plans, signup, or developer page.

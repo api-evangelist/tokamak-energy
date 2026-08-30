@@ -1,0 +1,51 @@
+generated: '2026-08-30'
+method: probed
+source: https://tokamakenergy.com/wp-json/ route table and live probes (2026-08-30); site search of tokamakenergy.com
+  for a versioning, deprecation, SLA or status page
+versioning:
+  scheme: namespace-in-path
+  current_version: wp/v2
+  policy_published: false
+  note: Tokamak Energy publishes no API versioning policy of its own. The version scheme is inherited
+    from WordPress core, where wp/v2 has been the stable namespace since WordPress 4.7 (December 2016).
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: []
+  note: No Deprecation or Sunset response header was observed, and no deprecation policy is published.
+    No Deprecation pointer is emitted in apis.yml.
+status_page:
+  published: false
+  probed:
+  - url: https://status.tokamakenergy.com
+    result: NXDOMAIN — no DNS record
+  note: No status page exists on any tokamakenergy.com host. No StatusPage pointer is emitted in apis.yml.
+sla:
+  published: false
+  note: No service level agreement or uptime commitment is published. This is an incidental content API
+    behind a corporate marketing site, not a supported product.
+changelog:
+  published: false
+  note: No API changelog. tokamakenergy.com/latest-news/ is a corporate news archive, not a release log
+    for this interface, so no changelog/ artifact and no ChangeLog pointer is emitted. The content itself
+    changes continuously; the contract does not.
+stability:
+  assessment: stable-by-inheritance
+  note: The contract is WordPress core wp/v2 plus two site-registered custom post types (portfolio, area-item)
+    and their taxonomies. Core routes are stable across WordPress releases; the site-specific types can
+    be renamed or unregistered by a theme or plugin change at any time and with no notice, which is the
+    real stability risk for a consumer of the area-item route.
+observed_lifecycle_risk:
+- signal: portfolio custom post type registered but empty
+  detail: GET /wp/v2/portfolio returns HTTP 200 with X-WP-Total 0. The route is live and the type is registered,
+    but no items are published — a consumer binding to it gets an empty collection indefinitely.
+  verified: '2026-08-30'
+- signal: post_tag taxonomy registered but unused
+  detail: GET /wp/v2/tags returns HTTP 200 with X-WP-Total 0. Categories (8 terms) are the only classification
+    actually in use.
+  verified: '2026-08-30'
+- signal: testimonial_category and portfolio_category taxonomies empty
+  detail: Both return HTTP 200 with X-WP-Total 0.
+  verified: '2026-08-30'

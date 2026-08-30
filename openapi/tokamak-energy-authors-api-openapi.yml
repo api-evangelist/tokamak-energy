@@ -1,0 +1,496 @@
+openapi: 3.1.0
+info:
+  title: Tokamak Energy Authors API
+  version: wp/v2
+  description: Public, unauthenticated read access to the post authors of the Tokamak Energy news archive.
+    Verified live at 4 authors on 2026-08-30. WordPress exposes only the public author view (name, slug,
+    description, avatar and archive link) anonymously; email addresses and roles require authentication.
+  contact:
+    name: Tokamak Energy
+    url: https://tokamakenergy.com/contact-us/
+  x-derived-from: Live WordPress REST API route descriptors and OPTIONS item schemas served by https://tokamakenergy.com/wp-json/
+    (probed 2026-08-30).
+servers:
+- url: https://tokamakenergy.com/wp-json
+  description: Tokamak Energy WordPress REST API
+tags:
+- name: Authors
+  description: Public, unauthenticated read access to the post authors of the Tokamak Energy news archive.
+    Verified live at 4 authors on 2026-08-30. WordPress exposes only the public author view (name, slug,
+    descrip
+paths:
+  /wp/v2/users:
+    get:
+      operationId: listAuthors
+      summary: List authors
+      description: Returns a paginated collection of authors published on tokamakenergy.com. Anonymous,
+        read-only. Probed live 2026-08-30 (4 items).
+      tags:
+      - Authors
+      parameters:
+      - name: context
+        in: query
+        description: Scope under which the request is made; determines fields present in response.
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: page
+        in: query
+        description: Current page of the collection.
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: per_page
+        in: query
+        description: Maximum number of items to be returned in result set.
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 10
+      - name: search
+        in: query
+        description: Limit results to those matching a string.
+        required: false
+        schema:
+          type: string
+      - name: exclude
+        in: query
+        description: Ensure result set excludes specific IDs.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: include
+        in: query
+        description: Limit result set to specific IDs.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: offset
+        in: query
+        description: Offset the result set by a specific number of items.
+        required: false
+        schema:
+          type: integer
+      - name: order
+        in: query
+        description: Order sort attribute ascending or descending.
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: asc
+      - name: orderby
+        in: query
+        description: Sort collection by user attribute.
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - include
+          - name
+          - registered_date
+          - slug
+          - include_slugs
+          - email
+          - url
+          default: name
+      - name: slug
+        in: query
+        description: Limit result set to users with one or more specific slugs.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: roles
+        in: query
+        description: Limit result set to users matching at least one specific role provided. Accepts csv
+          list or single role.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: capabilities
+        in: query
+        description: Limit result set to users matching at least one specific capability provided. Accepts
+          csv list or single capability.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: who
+        in: query
+        description: Limit result set to users who are considered authors.
+        required: false
+        schema:
+          type: string
+          enum:
+          - authors
+      - name: has_published_posts
+        in: query
+        description: Limit result set to users who have published posts.
+        required: false
+        schema:
+          type:
+          - boolean
+          - array
+          items:
+            type: string
+            enum:
+              post: post
+              page: page
+              attachment: attachment
+              nav_menu_item: nav_menu_item
+              wp_block: wp_block
+              wp_template: wp_template
+              wp_template_part: wp_template_part
+              wp_global_styles: wp_global_styles
+              wp_navigation: wp_navigation
+              wp_font_family: wp_font_family
+              wp_font_face: wp_font_face
+              portfolio: portfolio
+              area-item: area-item
+      - name: search_columns
+        in: query
+        description: Array of column names to be searched.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            enum:
+            - email
+            - name
+            - id
+            - username
+            - slug
+            type: string
+      responses:
+        '200':
+          description: A page of authors.
+          headers:
+            X-WP-Total:
+              description: Total number of items in the collection.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total number of pages available at the current per_page value.
+              schema:
+                type: integer
+            Link:
+              description: RFC 8288 pagination links (rel="next" / rel="prev").
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Author'
+              example:
+              - id: 2
+                name: jacquireid
+                url: ''
+                description: ''
+                link: https://tokamakenergy.com/author/jacquireid/
+                slug: jacquireid
+                meta: []
+                yoast_head: '<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/
+                  -->
+
+                  <title>jacquireid, Author at Tokamak Energy</title>
+
+                  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large,
+                  max-video-preview:-1" />
+
+                  <link rel="canonical" href="https://tokamakenergy.com/author/jacquireid/" />
+
+                  <meta property="og:locale" content="en_GB" />
+
+                  <meta property="og:type" content="profile" />
+
+                  <meta property="og:title" content="jacquireid, Author at Tokamak Energy" />
+
+                  <meta property="og:url" content="https://tokamakenergy.com/author/jacquireid/" / … [truncated
+                  by API Evangelist for readability; full value returned by the live API]'
+                yoast_head_json:
+                  title: jacquireid, Author at Tokamak Energy
+                  robots:
+                    index: index
+                    follow: follow
+                    max-snippet: max-snippet:-1
+                    max-image-preview: max-image-preview:large
+                    max-video-preview: max-video-preview:-1
+                  canonical: https://tokamakenergy.com/author/jacquireid/
+                  og_locale: en_GB
+                  og_type: profile
+                  og_title: jacquireid, Author at Tokamak Energy
+                  og_url: https://tokamakenergy.com/author/jacquireid/
+                  og_site_name: Tokamak Energy
+                  og_image:
+                  - url: https://secure.gravatar.com/avatar/2c1c7e22ddb9ee63e51e372ad859fa2e?s=500&d=mm&r=g
+                    type: ''
+                    width: ''
+                    height: ''
+                  twitter_card: summary_large_image
+                  twitter_site: '@TokamakEnergy'
+                  schema:
+                    '@context': https://schema.org
+                    '@graph':
+                    - '@type': ProfilePage
+                      '@id': https://tokamakenergy.com/author/jacquireid/
+                      url: https://tokamakenergy.com/author/jacquireid/
+                      name: jacquireid, Author at Tokamak Energy
+                      isPartOf:
+                        '@id': https://tokamakenergy.com/#website
+                      breadcrumb:
+                        '@id': https://tokamakenergy.com/author/jacquireid/#breadcrumb
+                      inLanguage: en-GB
+                      potentialAction:
+                      - '@type': ReadAction
+                        target:
+                        - https://tokamakenergy.com/author/jacquireid/
+                    - '@type': BreadcrumbList
+                      '@id': https://tokamakenergy.com/author/jacquireid/#breadcrumb
+                      itemListElement:
+                      - '@type': ListItem
+                        position: 1
+                        name: Home
+                        item: https://tokamakenergy.com/
+                      - '@type': ListItem
+                        position: 2
+                        name: Archives for jacquireid
+                    - '@type': WebSite
+                      '@id': https://tokamakenergy.com/#website
+                      url: https://tokamakenergy.com/
+                      name: Tokamak Energy
+                      description: Ensuring energy security for all
+                      publisher:
+                        '@id': https://tokamakenergy.com/#organization
+                      potentialAction:
+                      - '@type': SearchAction
+                        target:
+                          '@type': EntryPoint
+                          urlTemplate: https://tokamakenergy.com/?s={search_term_string}
+                        query-input:
+                          '@type': PropertyValueSpecification
+                          valueRequired: true
+                          valueName: search_term_string
+                      inLanguage: en-GB
+                    - '@type': Organization
+                      '@id': https://tokamakenergy.com/#organization
+                      name: Tokamak Energy
+                      url: https://tokamakenergy.com/
+                      logo:
+                        '@type': ImageObject
+                        inLanguage: en-GB
+                        '@id': https://tokamakenergy.com/#/schema/logo/image/
+                        url: https://www.tokamakenergy.co.uk/wp-content/uploads/2022/09/tokamak_logo.png
+                        contentUrl: https://www.tokamakenergy.co.uk/wp-content/uploads/2022/09/tokamak_logo.png
+                        width: 2000
+                        height: 485
+                        caption: Tokamak Energy
+                      image:
+                        '@id': https://tokamakenergy.com/#/schema/logo/image/
+                      sameAs:
+                      - https://x.com/TokamakEnergy
+                      - https://www.instagram.com/tokamakenergy/
+                      - https://www.linkedin.com/company/tokamak-energy-ltd
+                      - https://www.youtube.com/channel/UCuSlFJbBUIj1zfJLRnGXSow
+                    - '@type': Person
+                      '@id': https://tokamakenergy.com/#/schema/person/0597161b33872df4f0081ca9e871160f
+                      name: jacquireid
+                      mainEntityOfPage:
+                        '@id': https://tokamakenergy.com/author/jacquireid/
+        '400':
+          description: Bad request — an invalid parameter value was supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+  /wp/v2/users/{id}:
+    get:
+      operationId: getAuthor
+      summary: Retrieve a author
+      description: Returns a single author by its numeric identifier. Anonymous, read-only.
+      tags:
+      - Authors
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique numeric identifier for the author.
+        schema:
+          type: integer
+      - name: context
+        in: query
+        description: Scope under which the request is made; determines fields present in response.
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: The requested author.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+        '400':
+          description: Bad request — an invalid parameter value was supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+        '404':
+          description: Not found — no item exists with the supplied identifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+components:
+  schemas:
+    WPError:
+      type: object
+      title: WPError
+      description: WordPress REST API error envelope, observed live on this host.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_post_invalid_id or rest_forbidden.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          description: Error data.
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+      required:
+      - code
+      - message
+    Author:
+      title: user
+      type: object
+      properties:
+        id:
+          description: Unique identifier for the user.
+          type: integer
+        username:
+          description: Login name for the user.
+          type: string
+        name:
+          description: Display name for the user.
+          type: string
+        first_name:
+          description: First name for the user.
+          type: string
+        last_name:
+          description: Last name for the user.
+          type: string
+        email:
+          description: The email address for the user.
+          type: string
+          format: email
+        url:
+          description: URL of the user.
+          type: string
+          format: uri
+        description:
+          description: Description of the user.
+          type: string
+        link:
+          description: Author URL of the user.
+          type: string
+          format: uri
+        locale:
+          description: Locale for the user.
+          type: string
+          enum:
+          - ''
+          - en_US
+          - en_GB
+        nickname:
+          description: The nickname for the user.
+          type: string
+        slug:
+          description: An alphanumeric identifier for the user.
+          type: string
+        registered_date:
+          description: Registration date for the user.
+          type: string
+          format: date-time
+        roles:
+          description: Roles assigned to the user.
+          type: array
+          items:
+            type: string
+        password:
+          description: Password for the user (never included).
+          type: string
+        capabilities:
+          description: All capabilities assigned to the user.
+          type: object
+        extra_capabilities:
+          description: Any extra capabilities assigned to the user.
+          type: object
+        meta:
+          description: Meta fields.
+          type: object
+          properties:
+            persisted_preferences:
+              type: object
+              title: ''
+              description: ''
+              default: []
+              properties:
+                _modified:
+                  description: The date and time the preferences were updated.
+                  type: string
+                  format: date-time
+              additionalProperties: true
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords (HTTP Basic). Declared by this site at GET /wp-json/
+        under authentication.application-passwords. Required only for authenticated scopes and write operations;
+        every operation described in this document is readable anonymously.
+security:
+- {}
+- applicationPassword: []
+x-provenance:
+  generated: '2026-08-30'
+  method: derived
+  source: https://tokamakenergy.com/wp-json/ (route descriptors) + OPTIONS on each collection route (item
+    schemas), probed 2026-08-30
+  note: Derived by API Evangelist from the WordPress REST API descriptors this site publishes at its own
+    /wp-json/ root. Parameters, types, enums, defaults and item schemas are the values WordPress itself
+    reports for this host; response examples are verbatim live captures. Tokamak Energy does not publish
+    an OpenAPI document of its own.

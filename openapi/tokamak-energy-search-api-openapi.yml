@@ -1,0 +1,236 @@
+openapi: 3.1.0
+info:
+  title: Tokamak Energy Search API
+  version: wp/v2
+  description: Public, unauthenticated full-text search across every searchable object on tokamakenergy.com
+    — posts, pages and the area-item custom type. Returns a lightweight result envelope (id, title, url,
+    type, subtype) rather than the full object. Verified live at 137 searchable objects on 2026-08-30.
+  contact:
+    name: Tokamak Energy
+    url: https://tokamakenergy.com/contact-us/
+  x-derived-from: Live WordPress REST API route descriptors and OPTIONS item schemas served by https://tokamakenergy.com/wp-json/
+    (probed 2026-08-30).
+servers:
+- url: https://tokamakenergy.com/wp-json
+  description: Tokamak Energy WordPress REST API
+tags:
+- name: Search
+  description: 'Public, unauthenticated full-text search across every searchable object on tokamakenergy.com
+    — posts, pages and the area-item custom type. Returns a lightweight result envelope (id, title, url,
+    type, '
+paths:
+  /wp/v2/search:
+    get:
+      operationId: search
+      summary: Search site content
+      description: Runs a full-text search across the searchable post types of tokamakenergy.com and returns
+        matching objects as lightweight search results.
+      tags:
+      - Search
+      parameters:
+      - name: context
+        in: query
+        description: Scope under which the request is made; determines fields present in response.
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          default: view
+      - name: page
+        in: query
+        description: Current page of the collection.
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: per_page
+        in: query
+        description: Maximum number of items to be returned in result set.
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 10
+      - name: search
+        in: query
+        description: Limit results to those matching a string.
+        required: false
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Limit results to items of an object type.
+        required: false
+        schema:
+          type: string
+          enum:
+          - post
+          - term
+          - post-format
+          default: post
+      - name: subtype
+        in: query
+        description: Limit results to items of one or more object subtypes.
+        required: false
+        schema:
+          type: array
+          default: any
+          items:
+            enum:
+            - post
+            - page
+            - portfolio
+            - area-item
+            - category
+            - post_tag
+            - portfolio_category
+            - portfolio_field
+            - testimonial_category
+            - any
+            type: string
+      - name: exclude
+        in: query
+        description: Ensure result set excludes specific IDs.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: include
+        in: query
+        description: Limit result set to specific IDs.
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      responses:
+        '200':
+          description: A page of search results.
+          headers:
+            X-WP-Total:
+              description: Total number of items in the collection.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total number of pages available at the current per_page value.
+              schema:
+                type: integer
+            Link:
+              description: RFC 8288 pagination links (rel="next" / rel="prev").
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+              example:
+              - id: 9774
+                title: Tokamak Energy&#8217;s &#8216;Focus Collection&#8217; featured in prestigious Nuclear
+                  Fusion journal
+                url: https://tokamakenergy.com/2026/08/18/tokamak-energys-cocus-collection-featured-in-prestigious-nuclear-fusion-journal/
+                type: post
+                subtype: post
+              - id: 9757
+                title: Fusion power plant heating system passes Tokamak Energy site tests
+                url: https://tokamakenergy.com/2026/07/29/power-plant-heating-system-passes-tokamak-energy-site-testing/
+                type: post
+                subtype: post
+              - id: 9320
+                title: Tokamak Energy’s fusion control room recreated for new Lancaster University student
+                  nuclear simulator
+                url: https://tokamakenergy.com/2026/06/16/tokamak-energys-fusion-control-room-recreated-for-new-lancaster-university-student-nuclear-simulator/
+                type: post
+                subtype: post
+        '400':
+          description: Bad request — an invalid parameter value was supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+components:
+  schemas:
+    WPError:
+      type: object
+      title: WPError
+      description: WordPress REST API error envelope, observed live on this host.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_post_invalid_id or rest_forbidden.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          description: Error data.
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+      required:
+      - code
+      - message
+    SearchResult:
+      title: search-result
+      type: object
+      properties:
+        id:
+          description: Unique identifier for the object.
+          type:
+          - integer
+          - string
+        title:
+          description: The title for the object.
+          type: string
+        url:
+          description: URL to the object.
+          type: string
+          format: uri
+        type:
+          description: Object type.
+          type: string
+          enum:
+          - post
+          - term
+          - post-format
+        subtype:
+          description: Object subtype.
+          type: string
+          enum:
+          - post
+          - page
+          - portfolio
+          - area-item
+          - category
+          - post_tag
+          - portfolio_category
+          - portfolio_field
+          - testimonial_category
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords (HTTP Basic). Declared by this site at GET /wp-json/
+        under authentication.application-passwords. Required only for authenticated scopes and write operations;
+        every operation described in this document is readable anonymously.
+security:
+- {}
+- applicationPassword: []
+x-provenance:
+  generated: '2026-08-30'
+  method: derived
+  source: https://tokamakenergy.com/wp-json/ (route descriptors) + OPTIONS on each collection route (item
+    schemas), probed 2026-08-30
+  note: Derived by API Evangelist from the WordPress REST API descriptors this site publishes at its own
+    /wp-json/ root. Parameters, types, enums, defaults and item schemas are the values WordPress itself
+    reports for this host; response examples are verbatim live captures. Tokamak Energy does not publish
+    an OpenAPI document of its own.

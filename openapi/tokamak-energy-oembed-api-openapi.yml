@@ -1,0 +1,131 @@
+openapi: 3.1.0
+info:
+  title: Tokamak Energy oEmbed API
+  version: wp/v2
+  description: Public, unauthenticated oEmbed 1.0 provider endpoint for tokamakenergy.com. Given the URL
+    of any Tokamak Energy post or page, returns an oEmbed rich/link response suitable for embedding the
+    item in a third-party surface. Verified live 2026-08-30.
+  contact:
+    name: Tokamak Energy
+    url: https://tokamakenergy.com/contact-us/
+  x-derived-from: Live WordPress REST API route descriptors and OPTIONS item schemas served by https://tokamakenergy.com/wp-json/
+    (probed 2026-08-30).
+servers:
+- url: https://tokamakenergy.com/wp-json
+  description: Tokamak Energy WordPress REST API
+tags:
+- name: oEmbed
+  description: 'Public, unauthenticated oEmbed 1.0 provider endpoint for tokamakenergy.com. Given the
+    URL of any Tokamak Energy post or page, returns an oEmbed rich/link response suitable for embedding
+    the item in a '
+paths:
+  /oembed/1.0/embed:
+    get:
+      operationId: getOembed
+      summary: Retrieve an oEmbed response
+      description: Returns the oEmbed 1.0 response document for a Tokamak Energy URL.
+      tags:
+      - oEmbed
+      parameters:
+      - name: url
+        in: query
+        description: The URL of the resource for which to fetch oEmbed data.
+        required: true
+        schema:
+          type: string
+          format: uri
+      - name: format
+        in: query
+        description: format
+        required: false
+        schema:
+          default: json
+          type: string
+      - name: maxwidth
+        in: query
+        description: maxwidth
+        required: false
+        schema:
+          default: 600
+          type: string
+      responses:
+        '200':
+          description: The oEmbed response document.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: oEmbed 1.0 response.
+              example:
+                version: '1.0'
+                provider_name: Tokamak Energy
+                provider_url: https://tokamakenergy.com
+                author_name: martinp
+                author_url: https://tokamakenergy.com/author/martinp/
+                title: fusion energy and high temperature superconducting magnets - Tokamak Energy
+                type: rich
+                width: 600
+                height: 338
+                html: '<blockquote class="wp-embedded-content" data-secret="boI2LP4kCC"><a href="https://tokamakenergy.com/about-us/">About
+                  us</a></blockquote><iframe sandbox="allow-scripts" security="restricted" src="https://tokamakenergy.com/about-us/embed/#?secret=boI2LP4kCC"
+                  width="600" height="338" title="&#8220;About us&#8221; &#8212; Tokamak Energy" data-secret="boI2LP4kCC"
+                  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" class="wp-embedded-content"></iframe><script>
+
+                  /*! This file is auto-generated */
+
+                  !function(d,l){"use strict";l.querySelector&&d.addEventListener&&"undefined"!=typeof
+                  URL&&(d.w … [truncated by API Evangelist for readability; full value returned by the
+                  live API]'
+                thumbnail_url: https://tokamakenergy.com/wp-content/uploads/2023/11/about-tokamak-hero-image.jpg
+                thumbnail_width: 2500
+                thumbnail_height: 1581
+                description: Commercialising superconducting and fusion energy technologies - From fusion
+                  innovation to commercial impact
+        '404':
+          description: Not found — no item exists with the supplied identifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+components:
+  schemas:
+    WPError:
+      type: object
+      title: WPError
+      description: WordPress REST API error envelope, observed live on this host.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_post_invalid_id or rest_forbidden.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          description: Error data.
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+      required:
+      - code
+      - message
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords (HTTP Basic). Declared by this site at GET /wp-json/
+        under authentication.application-passwords. Required only for authenticated scopes and write operations;
+        every operation described in this document is readable anonymously.
+security:
+- {}
+- applicationPassword: []
+x-provenance:
+  generated: '2026-08-30'
+  method: derived
+  source: https://tokamakenergy.com/wp-json/ (route descriptors) + OPTIONS on each collection route (item
+    schemas), probed 2026-08-30
+  note: Derived by API Evangelist from the WordPress REST API descriptors this site publishes at its own
+    /wp-json/ root. Parameters, types, enums, defaults and item schemas are the values WordPress itself
+    reports for this host; response examples are verbatim live captures. Tokamak Energy does not publish
+    an OpenAPI document of its own.

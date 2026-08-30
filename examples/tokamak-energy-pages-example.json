@@ -1,0 +1,201 @@
+{
+  "x-provenance": {
+    "generated": "2026-08-30",
+    "method": "probed",
+    "source": "https://tokamakenergy.com/wp-json/wp/v2/pages?per_page=1",
+    "note": "Verbatim live response captured anonymously from the Tokamak Energy WordPress REST API. _links removed and string values longer than 600 characters truncated with an explicit marker; no value was altered otherwise."
+  },
+  "response": [
+    {
+      "id": 9733,
+      "date": "2026-07-28T15:41:10",
+      "date_gmt": "2026-07-28T14:41:10",
+      "guid": {
+        "rendered": "https://tokamakenergy.com/?page_id=9733"
+      },
+      "modified": "2026-08-27T11:43:57",
+      "modified_gmt": "2026-08-27T10:43:57",
+      "slug": "early-careers",
+      "status": "publish",
+      "type": "page",
+      "link": "https://tokamakenergy.com/early-careers/",
+      "title": {
+        "rendered": "Early careers"
+      },
+      "content": {
+        "rendered": "<p>[vc_row section_type=&#8221;fullwidth&#8221; height_ratio=&#8221;70&#8243; padding_top_multiplier=&#8221;5x&#8221; padding_bottom_multiplier=&#8221;5x&#8221; rc_heading_color=&#8221;white&#8221; rc_link_color=&#8221;white&#8221; rc_link_hover_color=&#8221;primary-2&#8243; rc_bg_type=&#8221;image&#8221; rc_bg_image=&#8221;6432&#8243; rc_bg_color_overlay=&#8221;black&#8221; rc_bg_opacity_overlay=&#8221;30&#8243; mobile_columns_vertical_gap=&#8221;none&#8221; tablet_sm_height_ratio=&#8221;60&#8243; mobile_height_ratio=&#8221;60&#8243; rc_font_color=&#8221;#ffffff&#8221; rc_bg_color=&#8221;#4b5 \u2026 [truncated by API Evangelist for readability; full value returned by the live API]",
+        "protected": false
+      },
+      "excerpt": {
+        "rendered": "<p>[vc_row section_type=&#8221;fullwidth&#8221; height_ratio=&#8221;70&#8243; padding_top_multiplier=&#8221;5x&#8221; padding_bottom_multiplier=&#8221;5x&#8221; rc_heading_color=&#8221;white&#8221; rc_link_color=&#8221;white&#8221; rc_link_hover_color=&#8221;primary-2&#8243; rc_bg_type=&#8221;image&#8221; rc_bg_image=&#8221;6432&#8243; rc_bg_color_overlay=&#8221;black&#8221; rc_bg_opacity_overlay=&#8221;30&#8243; mobile_columns_vertical_gap=&#8221;none&#8221; tablet_sm_height_ratio=&#8221;60&#8243; mobile_height_ratio=&#8221;60&#8243; rc_font_color=&#8221;#ffffff&#8221; rc_bg_color=&#8221;#4b5 \u2026 [truncated by API Evangelist for readability; full value returned by the live API]",
+        "protected": false
+      },
+      "author": 1,
+      "featured_media": 6430,
+      "parent": 0,
+      "menu_order": 0,
+      "comment_status": "closed",
+      "ping_status": "closed",
+      "template": "",
+      "meta": {
+        "inline_featured_image": false,
+        "footnotes": ""
+      },
+      "class_list": [
+        "post-9733",
+        "page",
+        "type-page",
+        "status-publish",
+        "has-post-thumbnail",
+        "hentry",
+        "grve-isotope-item"
+      ],
+      "yoast_head": "<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/ -->\n<title>Early Careers - Tokamak Energy</title>\n<meta name=\"description\" content=\"Building talent for the fusion energy industry of the future through apprenticeships, undergraduate student placements and PhD sponsorship.\" />\n<meta name=\"robots\" content=\"index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\" />\n<link rel=\"canonical\" href=\"https://tokamakenergy.com/early-careers/\" />\n<meta property=\"og:locale\" content=\"en_GB\" />\n<meta property=\"og:type\" content=\" \u2026 [truncated by API Evangelist for readability; full value returned by the live API]",
+      "yoast_head_json": {
+        "title": "Early Careers - Tokamak Energy",
+        "description": "Building talent for the fusion energy industry of the future through apprenticeships, undergraduate student placements and PhD sponsorship.",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "canonical": "https://tokamakenergy.com/early-careers/",
+        "og_locale": "en_GB",
+        "og_type": "article",
+        "og_title": "Early Careers - Tokamak Energy",
+        "og_description": "Building talent for the fusion energy industry of the future through apprenticeships, undergraduate student placements and PhD sponsorship.",
+        "og_url": "https://tokamakenergy.com/early-careers/",
+        "og_site_name": "Tokamak Energy",
+        "article_modified_time": "2026-08-27T10:43:57+00:00",
+        "og_image": [
+          {
+            "width": 1500,
+            "height": 1000,
+            "url": "https://tokamakenergy.com/wp-content/uploads/2023/11/Early-careers_thumbnail.jpg",
+            "type": "image/jpeg"
+          }
+        ],
+        "twitter_card": "summary_large_image",
+        "twitter_site": "@TokamakEnergy",
+        "twitter_misc": {
+          "Estimated reading time": "4 minutes"
+        },
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://tokamakenergy.com/early-careers/",
+              "url": "https://tokamakenergy.com/early-careers/",
+              "name": "Early Careers - Tokamak Energy",
+              "isPartOf": {
+                "@id": "https://tokamakenergy.com/#website"
+              },
+              "primaryImageOfPage": {
+                "@id": "https://tokamakenergy.com/early-careers/#primaryimage"
+              },
+              "image": {
+                "@id": "https://tokamakenergy.com/early-careers/#primaryimage"
+              },
+              "thumbnailUrl": "https://tokamakenergy.com/wp-content/uploads/2023/11/Early-careers_thumbnail.jpg",
+              "datePublished": "2026-07-28T14:41:10+00:00",
+              "dateModified": "2026-08-27T10:43:57+00:00",
+              "description": "Building talent for the fusion energy industry of the future through apprenticeships, undergraduate student placements and PhD sponsorship.",
+              "breadcrumb": {
+                "@id": "https://tokamakenergy.com/early-careers/#breadcrumb"
+              },
+              "inLanguage": "en-GB",
+              "potentialAction": [
+                {
+                  "@type": "ReadAction",
+                  "target": [
+                    "https://tokamakenergy.com/early-careers/"
+                  ]
+                }
+              ]
+            },
+            {
+              "@type": "ImageObject",
+              "inLanguage": "en-GB",
+              "@id": "https://tokamakenergy.com/early-careers/#primaryimage",
+              "url": "https://tokamakenergy.com/wp-content/uploads/2023/11/Early-careers_thumbnail.jpg",
+              "contentUrl": "https://tokamakenergy.com/wp-content/uploads/2023/11/Early-careers_thumbnail.jpg",
+              "width": 1500,
+              "height": 1000,
+              "caption": "Early careers thumbnail"
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://tokamakenergy.com/early-careers/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://tokamakenergy.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Early careers"
+                }
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://tokamakenergy.com/#website",
+              "url": "https://tokamakenergy.com/",
+              "name": "Tokamak Energy",
+              "description": "Ensuring energy security for all",
+              "publisher": {
+                "@id": "https://tokamakenergy.com/#organization"
+              },
+              "potentialAction": [
+                {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://tokamakenergy.com/?s={search_term_string}"
+                  },
+                  "query-input": {
+                    "@type": "PropertyValueSpecification",
+                    "valueRequired": true,
+                    "valueName": "search_term_string"
+                  }
+                }
+              ],
+              "inLanguage": "en-GB"
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://tokamakenergy.com/#organization",
+              "name": "Tokamak Energy",
+              "url": "https://tokamakenergy.com/",
+              "logo": {
+                "@type": "ImageObject",
+                "inLanguage": "en-GB",
+                "@id": "https://tokamakenergy.com/#/schema/logo/image/",
+                "url": "https://www.tokamakenergy.co.uk/wp-content/uploads/2022/09/tokamak_logo.png",
+                "contentUrl": "https://www.tokamakenergy.co.uk/wp-content/uploads/2022/09/tokamak_logo.png",
+                "width": 2000,
+                "height": 485,
+                "caption": "Tokamak Energy"
+              },
+              "image": {
+                "@id": "https://tokamakenergy.com/#/schema/logo/image/"
+              },
+              "sameAs": [
+                "https://x.com/TokamakEnergy",
+                "https://www.instagram.com/tokamakenergy/",
+                "https://www.linkedin.com/company/tokamak-energy-ltd",
+                "https://www.youtube.com/channel/UCuSlFJbBUIj1zfJLRnGXSow"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

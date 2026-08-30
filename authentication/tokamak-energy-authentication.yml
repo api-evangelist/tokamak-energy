@@ -1,0 +1,57 @@
+generated: '2026-08-30'
+method: probed
+source: https://tokamakenergy.com/wp-json/ (authentication block, probed 2026-08-30) + the nine openapi/
+  documents in this repository
+summary:
+  types:
+  - http
+schemes:
+- name: applicationPassword
+  type: http
+  scheme: basic
+  description: WordPress Application Passwords (HTTP Basic). Declared by this site at GET /wp-json/ under
+    authentication.application-passwords. Required only for authenticated scopes and write operations;
+    every operation described in this document is readable anonymously.
+  sources:
+  - openapi/tokamak-energy-area-items-api-openapi.yml
+  - openapi/tokamak-energy-authors-api-openapi.yml
+  - openapi/tokamak-energy-discovery-api-openapi.yml
+  - openapi/tokamak-energy-media-api-openapi.yml
+  - openapi/tokamak-energy-oembed-api-openapi.yml
+  - openapi/tokamak-energy-pages-api-openapi.yml
+  - openapi/tokamak-energy-posts-api-openapi.yml
+  - openapi/tokamak-energy-search-api-openapi.yml
+  - openapi/tokamak-energy-taxonomy-api-openapi.yml
+anonymous_access:
+  supported: true
+  note: Every operation profiled in this repository returns HTTP 200 to an unauthenticated GET. Verified
+    live 2026-08-30 against posts, pages, media, area-item, categories, tags, users, search, types, taxonomies
+    and oembed.
+  verified: '2026-08-30'
+authenticated_scopes:
+  mechanism: WordPress Application Passwords (HTTP Basic)
+  authorization_endpoint: https://tokamakenergy.com/wp-admin/authorize-application.php
+  declared_at: https://tokamakenergy.com/wp-json/ -> authentication.application-passwords.endpoints.authorization
+  note: 'This is the only authentication method this host advertises. It is an operator credential for
+    site editors, not a developer-programme credential: Tokamak Energy issues no API keys and runs no
+    signup for API access. Write operations (POST/PUT/PATCH/DELETE on posts, pages, media, area-item,
+    taxonomy terms, users, settings) and the edit context require it.'
+observed:
+- request: GET https://tokamakenergy.com/wp-json/wp/v2/posts?per_page=1
+  status: 200
+  auth: none
+- request: GET https://tokamakenergy.com/wp-json/wp/v2/settings
+  status: 401
+  auth: none
+  body_code: rest_forbidden
+- request: GET https://tokamakenergy.com/wp-json/wp/v2/comments
+  status: 403
+  auth: none
+- request: GET https://tokamakenergy.com/wp-json/wp-abilities/v1/abilities
+  status: 401
+  auth: none
+  body_code: rest_forbidden
+no_oauth:
+  value: true
+  note: No OAuth 2.0 or OpenID Connect surface. /.well-known/openid-configuration and /.well-known/oauth-authorization-server
+    both returned 404. No scopes/ artifact is emitted, because there is no scope surface to document.

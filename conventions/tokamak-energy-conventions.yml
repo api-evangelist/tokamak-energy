@@ -1,0 +1,116 @@
+generated: '2026-08-30'
+method: probed
+source: Live response headers and route descriptors from https://tokamakenergy.com/wp-json/ (2026-08-30)
+note: Cross-cutting runtime semantics for the Tokamak Energy WordPress REST content API. Everything here
+  was read off the live host or off the route descriptors it publishes; nothing is inferred from WordPress
+  documentation alone.
+auth_style:
+  anonymous_read: true
+  scheme: HTTP Basic (WordPress Application Passwords) for authenticated scopes only
+  ref: authentication/tokamak-energy-authentication.yml
+pagination:
+  style: page-number
+  params:
+  - name: page
+    default: 1
+    minimum: 1
+  - name: per_page
+    default: 10
+    minimum: 1
+    maximum: 100
+  response_headers:
+  - X-WP-Total
+  - X-WP-TotalPages
+  link_header:
+    present: true
+    rfc: RFC 8288
+    rels:
+    - next
+    - prev
+    observed: 'link: <https://tokamakenergy.com/wp-json/wp/v2/posts?per_page=1&page=2>; rel="next"'
+  cors:
+    access-control-expose-headers: X-WP-Total, X-WP-TotalPages, Link
+    note: The pagination headers are explicitly CORS-exposed, so a browser agent can read them cross-origin.
+  note: An agent should follow the Link rel="next" header rather than incrementing page, and should read
+    X-WP-Total before deciding to walk a collection — the media collection is 853 items, which is 9 pages
+    at the 100 maximum.
+sparse_fields:
+  supported: true
+  param: _fields
+  note: 'Every route accepts _fields=a,b,c to trim the response. This is the single highest-leverage optimisation
+    on this API: a full posts page carries rendered HTML bodies, and _fields=id,title,link,date reduces
+    a page from tens of kilobytes to a few hundred bytes.'
+embedding:
+  supported: true
+  param: _embed
+  note: _embed inlines the linked author, featured media and terms into _embedded, collapsing what would
+    otherwise be three extra round trips per item.
+field_contexts:
+  param: context
+  values:
+  - view
+  - embed
+  - edit
+  default: view
+  note: edit requires authentication and returns 401 anonymously.
+metadata:
+  supported: true
+  field: meta
+  note: Registered post meta is exposed per object where the site opts it in.
+request_id_tracing:
+  supported: false
+  note: No request-id or correlation header is returned. Observed response headers on a 200 are content-type,
+    x-robots-tag, x-content-type-options, access-control-expose-headers, access-control-allow-headers,
+    x-wp-total, x-wp-totalpages, link, allow, vary, date and alt-svc — none of them a trace identifier.
+    An agent cannot quote a request id when reporting a fault.
+versioning:
+  style: namespace-in-path
+  current: wp/v2
+  namespaces:
+  - wp/v2
+  - oembed/1.0
+  - yoast/v1
+  - duplicate-post/v1
+  - wp-site-health/v1
+  - wp-block-editor/v1
+  - wp-abilities/v1
+  note: Version is carried in the path namespace, not a header or query parameter. wp/v2 has been stable
+    since WordPress 4.7 (2016).
+error_envelope:
+  shape: wp-error
+  rfc9457: false
+  ref: errors/tokamak-energy-problem-types.yml
+rate_limit_signaling:
+  headers_present: false
+  note: No RateLimit-*, X-RateLimit-* or Retry-After header was observed on any 200 or 4xx response. See
+    rate-limits/tokamak-energy-rate-limits.yml.
+idempotency:
+  supported: na
+  note: 'na, not absent. There is no Idempotency-Key header and no idempotency scope, because there is
+    no anonymous write surface for one to protect: every operation profiled here is a GET. No Idempotency
+    pointer is emitted in apis.yml, because emitting one would assert a safety guarantee this API does
+    not make.'
+dry_run_mode:
+  supported: na
+  note: na — no write surface for an anonymous caller to rehearse.
+reversibility:
+  grade: na
+  applies: false
+  note: na, and this is a real finding rather than a gap. Every operation in this profile is a safe, side-effect-free
+    GET, so there is no action for an agent to take back and reversibility does not apply. The underlying
+    WordPress routes DO accept POST/PUT/PATCH/DELETE — deleting a post is reversible via the WordPress
+    trash and restore cycle, and media deletion is not — but those routes require an operator Application
+    Password, are not part of the public surface, and Tokamak Energy publishes no documentation stating
+    any reversal window. No window is asserted here because none is published.
+  write_surfaces: []
+  verified: '2026-08-30'
+caching:
+  note: No Cache-Control, ETag or Last-Modified header was observed on the collection responses. Conditional
+    requests are therefore not available and an agent must re-fetch to detect change; poll the posts collection
+    with _fields=id,modified and compare, rather than diffing full bodies.
+cross_links:
+  errors: errors/tokamak-energy-problem-types.yml
+  lifecycle: lifecycle/tokamak-energy-lifecycle.yml
+  authentication: authentication/tokamak-energy-authentication.yml
+  rate_limits: rate-limits/tokamak-energy-rate-limits.yml
+  data_model: data-model/tokamak-energy-data-model.yml

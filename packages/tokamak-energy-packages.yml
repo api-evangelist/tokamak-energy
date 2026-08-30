@@ -1,0 +1,72 @@
+generated: '2026-08-30'
+method: searched
+source: https://pypi.org/pypi/gsfit/json (2026-08-30); https://api.github.com/orgs/tokamak-energy/repos
+  (2026-08-30); npm, Maven Central, NuGet, pkg.go.dev, RubyGems, Packagist and crates.io searched for
+  a Tokamak Energy client library
+note: IMPORTANT DISTINCTION. Tokamak Energy publishes first-party open-source software, but none of it
+  is an API client. GSFit is a plasma equilibrium reconstruction library, not an SDK for the content API
+  profiled in this repository, and no client library for that API exists in any registry. No SDKs pointer
+  is emitted in apis.yml, because sdk_count must not be credited from a scientific computing package.
+  The entry below is recorded because it is real, first-party and dated — it is the best available currency
+  signal on this company's public software output.
+sdk_count: 0
+packages:
+- name: gsfit
+  registry: pypi
+  url: https://pypi.org/project/gsfit/
+  official: true
+  is_api_sdk: false
+  version: 0.0.10
+  published: '2026-08-05'
+  summary: 'GSFit: Equilibrium reconstruction — Grad-Shafranov equilibrium fitting for tokamak plasmas.'
+  first_party_evidence: PyPI author_email is peter.buxton@tokamakenergy.com and project_urls.Repository
+    is https://github.com/tokamak-energy/gsfit, a repository in the company's own GitHub organisation.
+  repository: https://github.com/tokamak-energy/gsfit
+  note: Actively maintained — the source repository was last pushed 2026-08-28, three weeks after the
+    0.0.10 release. Version is pre-1.0, which the maintainers signal as unstable API surface.
+- name: rtgsfit
+  registry: null
+  url: https://github.com/tokamak-energy/rtgsfit
+  official: true
+  is_api_sdk: false
+  version: null
+  published: null
+  summary: Real-time equilibrium reconstruction code (C).
+  note: Source-only. Not published to any package registry — pypi.org/pypi/rtgsfit/json returned 404.
+    version is null because there is nothing to read, not because it was not checked. Last pushed 2026-08-24.
+- name: FORGE
+  registry: null
+  url: https://github.com/tokamak-energy/FORGE
+  official: true
+  is_api_sdk: false
+  version: null
+  published: null
+  summary: Python tool for optimising tokamak divertor magnetic geometries via simulated annealing.
+  note: A fork held in the Tokamak Energy organisation rather than an original work, and unpublished to
+    any registry. Last pushed 2026-06-01.
+- name: freegs-gsfit
+  registry: null
+  url: https://github.com/tokamak-energy/freegs-gsfit
+  official: true
+  is_api_sdk: false
+  version: null
+  published: null
+  summary: Free boundary Grad-Shafranov solver (reconstruction). Fork.
+  note: Dormant — last pushed 2023-01-16, over three and a half years ago. Unpublished to any registry.
+registries_searched:
+- registry: pypi
+  result: gsfit found (200). rtgsfit, forge-te and tokamak-energy all 404.
+- registry: npm
+  result: no first-party package
+- registry: maven-central
+  result: no first-party package
+- registry: nuget
+  result: no first-party package
+- registry: pkg.go.dev
+  result: no first-party package
+- registry: rubygems
+  result: no first-party package
+- registry: packagist
+  result: no first-party package
+- registry: crates.io
+  result: no first-party package

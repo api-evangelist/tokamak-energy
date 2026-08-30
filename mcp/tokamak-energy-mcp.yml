@@ -1,0 +1,54 @@
+generated: '2026-08-30'
+method: derived
+source: openapi/*.yml in this repository, derived from https://tokamakenergy.com/wp-json/
+status: candidate
+note: 'NOBODY SHIPS THIS. Tokamak Energy operates no MCP server, hosted or local. This file is a derived
+  candidate tool list showing what an MCP server over the public content API would expose, and is deliberately
+  NOT wired as a type: MCPServer pointer in apis.yml — a pointer would assert an agent surface the provider
+  does not serve. The site does register the WordPress wp-abilities/v1 namespace, which is the closest
+  thing to a native agent-tool surface present here, but GET /wp-json/wp-abilities/v1/abilities returned
+  HTTP 401 rest_forbidden to an anonymous caller, so its ability list is not publicly readable.'
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: none
+  verified: derived
+probes:
+- url: https://tokamakenergy.com/wp-json/wp-abilities/v1/abilities
+  status: 401
+  body: '{"code":"rest_forbidden","message":"Sorry, you are not allowed to do that.","data":{"status":401}}'
+  note: WordPress Abilities API namespace is registered on this site but gated to authenticated operators.
+- url: https://tokamakenergy.com/.well-known/agent-card.json
+  status: 404
+- url: https://tokamakenergy.com/.well-known/agent.json
+  status: 404
+candidate_tools:
+- name: search_tokamak_energy
+  description: Full-text search across Tokamak Energy news, pages and area items.
+  rest: search
+- name: list_news
+  description: List Tokamak Energy news posts, filterable by date, category and search term.
+  rest: listPosts
+- name: get_news_item
+  description: Retrieve a single Tokamak Energy news post by id.
+  rest: getPost
+- name: list_pages
+  description: List the static pages of tokamakenergy.com.
+  rest: listPages
+- name: get_page
+  description: Retrieve a single page by id.
+  rest: getPage
+- name: list_media
+  description: List media assets — ST40, Demo4 and TE Magnetics imagery, diagrams and PDFs.
+  rest: listMedia
+- name: list_categories
+  description: List the news categories in use.
+  rest: listCategories
+- name: list_area_items
+  description: List the site-specific area-item content blocks.
+  rest: listAreaItems
+- name: describe_api
+  description: Return the registered content types and taxonomies so a caller can discover the surface.
+  rest: listTypes

@@ -1,0 +1,226 @@
+generated: '2026-08-30'
+method: derived
+source: OPTIONS item schemas and route descriptors from https://tokamakenergy.com/wp-json/ (probed 2026-08-30),
+  captured in the nine openapi/ documents in this repository
+note: The entity graph an agent needs in order to traverse this API without guessing. Every relationship
+  below is carried by a real id-reference field on a real live object.
+entities:
+- name: Post
+  rest_base: posts
+  count: 84
+  id: integer
+  description: A Tokamak Energy news item. The substantive content of this API.
+  key_fields:
+  - id
+  - date
+  - modified
+  - slug
+  - link
+  - title.rendered
+  - content.rendered
+  - excerpt.rendered
+  - author
+  - featured_media
+  - categories
+  - tags
+  - class_list
+- name: Page
+  rest_base: pages
+  count: 26
+  id: integer
+  description: A static site page — About Us, technology, careers, policy.
+  key_fields:
+  - id
+  - date
+  - modified
+  - slug
+  - link
+  - title.rendered
+  - content.rendered
+  - author
+  - featured_media
+  - parent
+  - menu_order
+  - template
+- name: MediaItem
+  rest_base: media
+  count: 853
+  id: integer
+  description: 'An uploaded asset: image, diagram, PDF or video.'
+  key_fields:
+  - id
+  - date
+  - slug
+  - link
+  - title.rendered
+  - author
+  - media_type
+  - mime_type
+  - source_url
+  - alt_text
+  - caption.rendered
+  - media_details
+  - post
+- name: AreaItem
+  rest_base: area-item
+  count: 27
+  id: integer
+  description: Site-specific custom post type used to compose the technology, careers and about areas.
+  key_fields:
+  - id
+  - date
+  - modified
+  - slug
+  - link
+  - title.rendered
+  - content.rendered
+  - featured_media
+  - template
+- name: Category
+  rest_base: categories
+  count: 8
+  id: integer
+  description: Term in the `category` taxonomy, applied to posts.
+  key_fields:
+  - id
+  - count
+  - name
+  - slug
+  - description
+  - parent
+  - taxonomy
+  - link
+- name: Tag
+  rest_base: tags
+  count: 0
+  id: integer
+  description: Term in the `post_tag` taxonomy. Registered and callable but currently empty on this site.
+  key_fields:
+  - id
+  - count
+  - name
+  - slug
+  - description
+  - taxonomy
+  - link
+- name: Author
+  rest_base: users
+  count: 4
+  id: integer
+  description: Public author view of a WordPress user. Anonymous callers see name, slug, description,
+    avatar and archive link only.
+  key_fields:
+  - id
+  - name
+  - url
+  - description
+  - link
+  - slug
+  - avatar_urls
+- name: ContentType
+  rest_base: types
+  id: slug
+  description: Registration record for a content type, including the site-specific portfolio and area-item
+    types.
+  key_fields:
+  - slug
+  - name
+  - description
+  - rest_base
+  - rest_namespace
+  - taxonomies
+  - hierarchical
+  - has_archive
+- name: Taxonomy
+  rest_base: taxonomies
+  id: slug
+  description: Registration record for a taxonomy and the types it applies to.
+  key_fields:
+  - slug
+  - name
+  - description
+  - rest_base
+  - rest_namespace
+  - types
+  - hierarchical
+- name: SearchResult
+  rest_base: search
+  id: integer
+  description: 'Lightweight projection returned by the search route: id, title, url, type, subtype. Not
+    a full object — resolve it against the owning collection.'
+  key_fields:
+  - id
+  - title
+  - url
+  - type
+  - subtype
+  - _links.self
+relationships:
+- from: Post
+  to: Author
+  type: belongs_to
+  via: author
+  note: Numeric user id. Resolve at /wp/v2/users/{id}, or inline with _embed.
+- from: Post
+  to: MediaItem
+  type: belongs_to
+  via: featured_media
+  note: Numeric media id; 0 means no featured image.
+- from: Post
+  to: Category
+  type: has_many
+  via: categories
+  note: Array of numeric term ids.
+- from: Post
+  to: Tag
+  type: has_many
+  via: tags
+  note: Array of numeric term ids. Always empty on this site — the taxonomy is unused.
+- from: Page
+  to: Author
+  type: belongs_to
+  via: author
+- from: Page
+  to: MediaItem
+  type: belongs_to
+  via: featured_media
+- from: Page
+  to: Page
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy; 0 at the root. The technology area nests beneath /our-fusion-energy-and-hts-technology/.
+- from: MediaItem
+  to: Post
+  type: belongs_to
+  via: post
+  note: The object the asset was uploaded to; null for library-only assets.
+- from: MediaItem
+  to: Author
+  type: belongs_to
+  via: author
+- from: AreaItem
+  to: MediaItem
+  type: belongs_to
+  via: featured_media
+- from: Category
+  to: Category
+  type: belongs_to
+  via: parent
+  note: Hierarchical taxonomy; 0 at the root.
+- from: ContentType
+  to: Taxonomy
+  type: has_many
+  via: taxonomies
+  note: Array of taxonomy slugs.
+- from: SearchResult
+  to: Post
+  type: has_one
+  via: id + subtype
+  note: subtype names the owning collection (post, page, area-item); resolve id there for the full object.
+traversal_notes:
+- Use _embed on a posts request to inline author, featured media and terms in one round trip instead of
+  four.
+- Use _fields to trim rendered HTML out of a listing; it is the difference between a 22 KB page and a
+  400 byte one.
+- Numeric ids are site-local and are NOT stable identifiers of subject matter. The durable identifier
+  for a news item is its `link` / `slug`.

@@ -1,0 +1,658 @@
+openapi: 3.1.0
+info:
+  title: Tokamak Energy Discovery API
+  version: wp/v2
+  description: The machine-readable description of the Tokamak Energy content API itself — the REST root
+    document, the registered content types (including the site-specific portfolio and area-item types),
+    the registered taxonomies, and the publication statuses. An agent can start at GET /wp-json/ and reach
+    every other operation in this profile without any out-of-band knowledge. Read-only and anonymous.
+  contact:
+    name: Tokamak Energy
+    url: https://tokamakenergy.com/contact-us/
+  x-derived-from: Live WordPress REST API route descriptors and OPTIONS item schemas served by https://tokamakenergy.com/wp-json/
+    (probed 2026-08-30).
+servers:
+- url: https://tokamakenergy.com/wp-json
+  description: Tokamak Energy WordPress REST API
+tags:
+- name: Discovery
+  description: The machine-readable description of the Tokamak Energy content API itself — the REST root
+    document, the registered content types (including the site-specific portfolio and area-item types),
+    the regist
+paths:
+  /:
+    get:
+      operationId: getApiIndex
+      summary: Retrieve the API discovery index
+      description: 'Returns the WordPress REST API root document for tokamakenergy.com: site name and
+        description, the list of registered namespaces (oembed/1.0, yoast/v1, duplicate-post/v1, wp/v2,
+        wp-site-health/v1, wp-block-editor/v1, wp-abilities/v1), the full route table with per-route methods
+        and argument descriptors, and the supported authentication methods. This is the machine-readable
+        entry point to every other operation in this repository.'
+      tags:
+      - Discovery
+      parameters: []
+      responses:
+        '200':
+          description: Retrieve the API discovery index.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not found — no item exists with the supplied identifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+  /wp/v2/types:
+    get:
+      operationId: listTypes
+      summary: List registered content types
+      description: Returns every content type registered on tokamakenergy.com with its REST base, including
+        the two site-specific types portfolio and area-item alongside WordPress core types.
+      tags:
+      - Discovery
+      parameters: []
+      responses:
+        '200':
+          description: List registered content types.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentType'
+              example:
+                post:
+                  description: ''
+                  hierarchical: false
+                  has_archive: false
+                  name: Posts
+                  slug: post
+                  icon: dashicons-admin-post
+                  taxonomies:
+                  - category
+                  - post_tag
+                  rest_base: posts
+                  rest_namespace: wp/v2
+                  template: []
+                  template_lock: false
+                  yoast_head: '<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/
+                    -->
+
+                    <title>Tokamak Energy - Ensuring energy security for all</title>
+
+                    <meta name="description" content="Ensuring energy security for all" />
+
+                    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large,
+                    max-video-preview:-1" />
+
+                    <link rel="canonical" href="https://tokamakenergy.com/" />
+
+                    <meta property="og:locale" content="en_GB" />
+
+                    <meta property="og:type" content="website" />
+
+                    <meta property="og:title" content="Tokamak Energy" />
+
+                    <meta property="og:description" cont … [truncated by API Evangelist for readability;
+                    full value returned by the live API]'
+                  yoast_head_json:
+                    title: Tokamak Energy - Ensuring energy security for all
+                    description: Ensuring energy security for all
+                    robots:
+                      index: index
+                      follow: follow
+                      max-snippet: max-snippet:-1
+                      max-image-preview: max-image-preview:large
+                      max-video-preview: max-video-preview:-1
+                    canonical: https://tokamakenergy.com/
+                    og_locale: en_GB
+                    og_type: website
+                    og_title: Tokamak Energy
+                    og_description: Ensuring energy security for all
+                    og_url: https://tokamakenergy.com/
+                    og_site_name: Tokamak Energy
+                    twitter_card: summary_large_image
+                    twitter_site: '@TokamakEnergy'
+                    schema:
+                      '@context': https://schema.org
+                      '@graph':
+                      - '@type': CollectionPage
+                        '@id': https://tokamakenergy.com/
+                        url: https://tokamakenergy.com/
+                        name: Tokamak Energy - Ensuring energy security for all
+                        isPartOf:
+                          '@id': https://tokamakenergy.com/#website
+                        description: Ensuring energy security for all
+                        breadcrumb:
+                          '@id': https://tokamakenergy.com/#breadcrumb
+                        inLanguage: en-GB
+                      - '@type': BreadcrumbList
+                        '@id': https://tokamakenergy.com/#breadcrumb
+                        itemListElement:
+                        - '@type': ListItem
+                          position: 1
+                          name: Home
+                          item: https://tokamakenergy.com/
+                        - '@type': ListItem
+                          position: 2
+                          name: Home
+                      - '@type': WebSite
+                        '@id': https://tokamakenergy.com/#website
+                        url: https://tokamakenergy.com/
+                        name: Tokamak Energy
+                        description: Ensuring energy security for all
+                        publisher:
+                          '@id': https://tokamakenergy.com/#organization
+                        potentialAction:
+                        - '@type': SearchAction
+                          target:
+                            '@type': EntryPoint
+                            urlTemplate: https://tokamakenergy.com/?s={search_term_string}
+                          query-input:
+                            '@type': PropertyValueSpecification
+                            valueRequired: true
+                            valueName: search_term_string
+                        inLanguage: en-GB
+                      - '@type': Organization
+                        '@id': https://tokamakenergy.com/#organization
+                        name: Tokamak Energy
+                        url: https://tokamakenergy.com/
+                        logo:
+                          '@type': ImageObject
+                          inLanguage: en-GB
+                          '@id': https://tokamakenergy.com/#/schema/logo/image/
+                          url: https://www.tokamakenergy.co.uk/wp-content/uploads/2022/09/tokamak_logo.png
+                          contentUrl: https://www.tokamakenergy.co.uk/wp-content/uploads/2022/09/tokamak_logo.png
+                          width: 2000
+                          height: 485
+                          caption: Tokamak Energy
+                        image:
+                          '@id': https://tokamakenergy.com/#/schema/logo/image/
+                        sameAs:
+                        - https://x.com/TokamakEnergy
+                        - https://www.instagram.com/tokamakenergy/
+                        - https://www.linkedin.com/company/tokamak-energy-ltd
+                        - https://www.youtube.com/channel/UCuSlFJbBUIj1zfJLRnGXSow
+                page:
+                  description: ''
+                  hierarchical: true
+                  has_archive: false
+                  name: Pages
+                  slug: page
+                  icon: dashicons-admin-page
+                  taxonomies: []
+                  rest_base: pages
+                  rest_namespace: wp/v2
+                  template: []
+                  template_lock: false
+                  yoast_head: null
+                  yoast_head_json: null
+                attachment:
+                  description: ''
+                  hierarchical: false
+                  has_archive: false
+                  name: Media
+                  slug: attachment
+                  icon: dashicons-admin-media
+                  taxonomies: []
+                  rest_base: media
+                  rest_namespace: wp/v2
+                  template: []
+                  template_lock: false
+                  yoast_head: null
+                  yoast_head_json: null
+                nav_menu_item:
+                  description: ''
+                  hierarchical: false
+                  has_archive: false
+                  name: Navigation Menu Items
+                  slug: nav_menu_item
+                  icon: null
+                  taxonomies:
+                  - nav_menu
+                  rest_base: menu-items
+                  rest_namespace: wp/v2
+                  template: []
+                  template_lock: false
+                  yoast_head: null
+                  yoast_head_json: null
+                wp_block:
+                  description: ''
+                  hierarchical: false
+                  has_archive: false
+                  name: Patterns
+                  slug: wp_block
+                  icon: null
+                  taxonomies:
+                  - wp_pattern_category
+                  rest_base: blocks
+                  rest_namespace: wp/v2
+                  template: []
+                  template_lock: false
+                  yoast_head: null
+                  yoast_head_json: null
+                wp_template:
+                  description: Templates to include in your theme.
+                  hierarchical: false
+                  has_archive: false
+                  name: Templates
+                  slug: wp_template
+                  icon: null
+                  taxonomies: []
+                  rest_base: templates
+                  rest_namespace: wp/v2
+                  template: []
+                  template_lock: false
+                  yoast_head: null
+                  yoast_head_json: null
+                wp_template_part:
+                  description: Template parts to include in your templates.
+                  hierarchical: false
+                  has_archive: false
+                  name: Template parts
+                  slug: wp_template_part
+                  icon: null
+                  taxonomies: []
+                  rest_base: template-parts
+                  rest_namespace: wp/v2
+                  template: []
+                  template_lock: false
+                  yoast_head: null
+                  yoast_head_json: null
+                wp_global_styles:
+                  description: Global styles to include in themes.
+                  hierarchical: false
+                  has_archive: false
+                  name: Global styles
+                  slug: wp_global_styles
+                  icon: null
+                  taxonomies: []
+                  rest_base: global-styles
+                  rest_namespace: wp/v2
+                  template: []
+                  template_lock: false
+                  yoast_head: null
+                  yoast_head_json: null
+                wp_navigation:
+                  description: Navigation menus that can be inserted into your site.
+                  hierarchical: false
+                  has_archive: false
+                  name: Navigation menus
+                  slug: wp_navigation
+                  icon: null
+                  taxonomies: []
+                  rest_base: navigation
+                  rest_namespace: wp/v2
+                  template: []
+                  template_lock: false
+                  yoast_head: null
+                  yoast_head_json: null
+                wp_font_family:
+                  description: ''
+                  hierarchical: false
+                  has_archive: false
+                  name: Font families
+                  slug: wp_font_family
+                  icon: null
+                  taxonomies: []
+                  rest_base: font-families
+                  rest_namespace: wp/v2
+                  template: []
+                  template_lock: false
+                  yoast_head: null
+                  yoast_head_json: null
+                wp_font_face:
+                  description: ''
+                  hierarchical: false
+                  has_archive: false
+                  name: Font faces
+                  slug: wp_font_face
+                  icon: null
+                  taxonomies: []
+                  rest_base: font-families/(?P<font_family_id>[\d]+)/font-faces
+                  rest_namespace: wp/v2
+                  template: []
+                  template_lock: false
+                  yoast_head: null
+                  yoast_head_json: null
+                portfolio:
+                  description: ''
+                  hierarchical: false
+                  has_archive: true
+                  name: Portfolio Items
+                  slug: portfolio
+                  icon: dashicons-format-gallery
+                  taxonomies:
+                  - portfolio_category
+                  - portfolio_field
+                  rest_base: portfolio
+                  rest_namespace: wp/v2
+                  template: []
+                  template_lock: false
+                  yoast_head: '<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/
+                    -->
+
+                    <title>Portfolio Items Archive - Tokamak Energy</title>
+
+                    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large,
+                    max-video-preview:-1" />
+
+                    <link rel="canonical" href="https://tokamakenergy.com/portfolio-item/" />
+
+                    <meta property="og:locale" content="en_GB" />
+
+                    <meta property="og:type" content="website" />
+
+                    <meta property="og:title" content="Portfolio Items Archive - Tokamak Energy" />
+
+                    <meta property="og:url" content="https://tokamakenergy.com/portfolio-item/" … [truncated
+                    by API Evangelist for readability; full value returned by the live API]'
+                  yoast_head_json:
+                    title: Portfolio Items Archive - Tokamak Energy
+                    robots:
+                      index: index
+                      follow: follow
+                      max-snippet: max-snippet:-1
+                      max-image-preview: max-image-preview:large
+                      max-video-preview: max-video-preview:-1
+                    canonical: https://tokamakenergy.com/portfolio-item/
+                    og_locale: en_GB
+                    og_type: website
+                    og_title: Portfolio Items Archive - Tokamak Energy
+                    og_url: https://tokamakenergy.com/portfolio-item/
+                    og_site_name: Tokamak Energy
+                    twitter_card: summary_large_image
+                    twitter_site: '@TokamakEnergy'
+                    schema:
+                      '@context': https://schema.org
+                      '@graph':
+                      - '@type': CollectionPage
+                        '@id': https://tokamakenergy.com/portfolio-item/
+                        url: https://tokamakenergy.com/portfolio-item/
+                        name: Portfolio Items Archive - Tokamak Energy
+                        isPartOf:
+                          '@id': https://tokamakenergy.com/#website
+                        breadcrumb:
+                          '@id': https://tokamakenergy.com/portfolio-item/#breadcrumb
+                        inLanguage: en-GB
+                      - '@type': BreadcrumbList
+                        '@id': https://tokamakenergy.com/portfolio-item/#breadcrumb
+                        itemListElement:
+                        - '@type': ListItem
+                          position: 1
+                          name: Home
+                          item: https://tokamakenergy.com/
+                        - '@type': ListItem
+                          position: 2
+                          name: Portfolio Items
+                      - '@type': WebSite
+                        '@id': https://tokamakenergy.com/#website
+                        url: https://tokamakenergy.com/
+                        name: Tokamak Energy
+                        description: Ensuring energy security for all
+                        publisher:
+                          '@id': https://tokamakenergy.com/#organization
+                        potentialAction:
+                        - '@type': SearchAction
+                          target:
+                            '@type': EntryPoint
+                            urlTemplate: https://tokamakenergy.com/?s={search_term_string}
+                          query-input:
+                            '@type': PropertyValueSpecification
+                            valueRequired: true
+                            valueName: search_term_string
+                        inLanguage: en-GB
+                      - '@type': Organization
+                        '@id': https://tokamakenergy.com/#organization
+                        name: Tokamak Energy
+                        url: https://tokamakenergy.com/
+                        logo:
+                          '@type': ImageObject
+                          inLanguage: en-GB
+                          '@id': https://tokamakenergy.com/#/schema/logo/image/
+                          url: https://www.tokamakenergy.co.uk/wp-content/uploads/2022/09/tokamak_logo.png
+                          contentUrl: https://www.tokamakenergy.co.uk/wp-content/uploads/2022/09/tokamak_logo.png
+                          width: 2000
+                          height: 485
+                          caption: Tokamak Energy
+                        image:
+                          '@id': https://tokamakenergy.com/#/schema/logo/image/
+                        sameAs:
+                        - https://x.com/TokamakEnergy
+                        - https://www.instagram.com/tokamakenergy/
+                        - https://www.linkedin.com/company/tokamak-energy-ltd
+                        - https://www.youtube.com/channel/UCuSlFJbBUIj1zfJLRnGXSow
+                area-item:
+                  description: ''
+                  hierarchical: false
+                  has_archive: false
+                  name: Area Items
+                  slug: area-item
+                  icon: dashicons-media-text
+                  taxonomies: []
+                  rest_base: area-item
+                  rest_namespace: wp/v2
+                  template: []
+                  template_lock: false
+                  yoast_head: null
+                  yoast_head_json: null
+        '400':
+          description: Bad request — an invalid parameter value was supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+  /wp/v2/types/{type}:
+    get:
+      operationId: getType
+      summary: Retrieve a content type
+      description: Returns a single registered content type by slug.
+      tags:
+      - Discovery
+      parameters:
+      - name: type
+        in: path
+        required: true
+        description: Slug of the content type, e.g. post, page, portfolio, area-item.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Retrieve a content type.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not found — no item exists with the supplied identifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+  /wp/v2/taxonomies:
+    get:
+      operationId: listTaxonomies
+      summary: List registered taxonomies
+      description: Returns every taxonomy registered on tokamakenergy.com with its REST base and the content
+        types it applies to.
+      tags:
+      - Discovery
+      parameters: []
+      responses:
+        '200':
+          description: List registered taxonomies.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad request — an invalid parameter value was supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+  /wp/v2/taxonomies/{taxonomy}:
+    get:
+      operationId: getTaxonomy
+      summary: Retrieve a taxonomy
+      description: Returns a single registered taxonomy by slug.
+      tags:
+      - Discovery
+      parameters:
+      - name: taxonomy
+        in: path
+        required: true
+        description: Slug of the taxonomy, e.g. category, post_tag, portfolio_category, testimonial_category.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Retrieve a taxonomy.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Not found — no item exists with the supplied identifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+  /wp/v2/statuses:
+    get:
+      operationId: listStatuses
+      summary: List publication statuses
+      description: Returns the publication statuses exposed by this site.
+      tags:
+      - Discovery
+      parameters: []
+      responses:
+        '200':
+          description: List publication statuses.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad request — an invalid parameter value was supplied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPError'
+components:
+  schemas:
+    WPError:
+      type: object
+      title: WPError
+      description: WordPress REST API error envelope, observed live on this host.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_post_invalid_id or rest_forbidden.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          description: Error data.
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+      required:
+      - code
+      - message
+    ContentType:
+      title: type
+      type: object
+      properties:
+        capabilities:
+          description: All capabilities used by the post type.
+          type: object
+        description:
+          description: A human-readable description of the post type.
+          type: string
+        hierarchical:
+          description: Whether or not the post type should have children.
+          type: boolean
+        viewable:
+          description: Whether or not the post type can be viewed.
+          type: boolean
+        labels:
+          description: Human-readable labels for the post type for various contexts.
+          type: object
+        name:
+          description: The title for the post type.
+          type: string
+        slug:
+          description: An alphanumeric identifier for the post type.
+          type: string
+        supports:
+          description: All features, supported by the post type.
+          type: object
+        has_archive:
+          description: If the value is a string, the value will be used as the archive slug. If the value
+            is false the post type has no archive.
+          type:
+          - string
+          - boolean
+        taxonomies:
+          description: Taxonomies associated with post type.
+          type: array
+          items:
+            type: string
+        rest_base:
+          description: REST base route for the post type.
+          type: string
+        rest_namespace:
+          description: REST route's namespace for the post type.
+          type: string
+        visibility:
+          description: The visibility settings for the post type.
+          type: object
+          properties:
+            show_ui:
+              description: Whether to generate a default UI for managing this post type.
+              type: boolean
+            show_in_nav_menus:
+              description: Whether to make the post type available for selection in navigation menus.
+              type: boolean
+        icon:
+          description: The icon for the post type.
+          type:
+          - string
+          nullable: true
+        template:
+          type:
+          - array
+          description: The block template associated with the post type.
+        template_lock:
+          type:
+          - string
+          - boolean
+          enum:
+          - all
+          - insert
+          - contentOnly
+          - false
+          description: The template_lock associated with the post type, or false if none.
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords (HTTP Basic). Declared by this site at GET /wp-json/
+        under authentication.application-passwords. Required only for authenticated scopes and write operations;
+        every operation described in this document is readable anonymously.
+security:
+- {}
+- applicationPassword: []
+x-provenance:
+  generated: '2026-08-30'
+  method: derived
+  source: https://tokamakenergy.com/wp-json/ (route descriptors) + OPTIONS on each collection route (item
+    schemas), probed 2026-08-30
+  note: Derived by API Evangelist from the WordPress REST API descriptors this site publishes at its own
+    /wp-json/ root. Parameters, types, enums, defaults and item schemas are the values WordPress itself
+    reports for this host; response examples are verbatim live captures. Tokamak Energy does not publish
+    an OpenAPI document of its own.
