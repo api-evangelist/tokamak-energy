@@ -114,6 +114,10 @@ apis:
   tags:
   - Media
   - Content
+  - Image
+  tags_raw:
+  - Media
+  - Content
   - Images
   properties:
   - type: OpenAPI
