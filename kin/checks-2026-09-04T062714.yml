@@ -1,17 +1,17 @@
 ---
 kin_checks:
   slug: tokamak-energy
-  schema_version: 0.17.2
-  scored_at: '2026-09-01'
-  run_ts: 2026-09-01T063623
+  schema_version: 0.18.2
+  scored_at: '2026-09-04'
+  run_ts: 2026-09-04T062714
   note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.17.2.yml; counts below let you verify that.
+    in rubric/scoring-0.18.2.yml; counts below let you verify that.
   counts:
-    total: 130
-    earned: 38
-    partial: 5
+    total: 132
+    earned: 21
+    partial: 22
     missed: 67
-    na: 20
+    na: 22
   checks:
   - id: well_known_published
     status: missed
@@ -25,8 +25,6 @@ kin_checks:
   - id: openapi_3_0
     status: missed
     detail: 0 of 9 openapi documents pass
-  - id: servers_resolvable
-    status: missed
   - id: components_reuse
     status: missed
     detail: 0 of 9 openapi documents pass
@@ -131,6 +129,8 @@ kin_checks:
     status: missed
   - id: reversibility_documented
     status: missed
+  - id: mcp_server
+    status: missed
   - id: idempotency
     status: missed
   - id: event_surface_described
@@ -151,17 +151,78 @@ kin_checks:
     status: missed
   - id: agentic_commerce
     status: missed
+  - id: contract_present
+    status: partial
+    earned: 5.0
+  - id: openapi_3_1
+    status: partial
+    earned: 1.25
+    detail: 9 of 9 openapi documents pass
+  - id: info_complete
+    status: partial
+    earned: 1.0
+    detail: 9 of 9 openapi documents pass
+  - id: servers_defined
+    status: partial
+    earned: 0.75
+    detail: 9 of 9 openapi documents pass
+  - id: servers_resolvable
+    status: partial
+    earned: 1.25
+  - id: operations_summary_coverage
+    status: partial
+    earned: 1.5
+    detail: 9 of 9 openapi documents pass
+  - id: operations_description_coverage
+    status: partial
+    earned: 1.5
+    detail: 9 of 9 openapi documents pass
+  - id: operations_tagged
+    status: partial
+    earned: 1.0
+    detail: 9 of 9 openapi documents pass
+  - id: operations_operation_ids
+    status: partial
+    earned: 1.0
+    detail: 9 of 9 openapi documents pass
+  - id: response_coverage
+    status: partial
+    earned: 1.25
+    detail: 9 of 9 openapi documents pass
+  - id: error_responses_documented
+    status: partial
+    earned: 1.0
+    detail: 9 of 9 openapi documents pass
   - id: examples_present
     status: partial
-    earned: 2.19
+    earned: 0.55
+  - id: security_schemes_defined
+    status: partial
+    earned: 1.0
+    detail: 9 of 9 openapi documents pass
+  - id: security_applied
+    status: partial
+    earned: 0.75
+    detail: 9 of 9 openapi documents pass
+  - id: oauth_flows_current
+    status: partial
+    earned: 1.0
+    detail: 9 of 9 openapi documents pass
+  - id: credentials_not_in_query
+    status: partial
+    earned: 0.75
+    detail: 9 of 9 openapi documents pass
+  - id: oauth_scopes_enumerated
+    status: partial
+    earned: 1.0
+    detail: 9 of 9 openapi documents pass
   - id: github_org_present
     status: partial
     earned: 1.0
     detail: pointer liveness 0.5
-  - id: mcp_server
+  - id: agent_skill_present
     status: partial
-    earned: 4.8
-    detail: 'grade: documented'
+    earned: 0.75
   - id: auth_clarity
     status: partial
     earned: 3.5
@@ -170,3 +231,7 @@ kin_checks:
     status: partial
     earned: 3.5
     detail: 'grade: documented'
+  - id: agent_skills
+    status: partial
+    earned: 1.25
+    detail: 'authorship: derived'

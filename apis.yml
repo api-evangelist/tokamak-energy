@@ -21,6 +21,21 @@ description: >-
   open-source plasma physics code — GSFit, RTGSFit and FORGE — through the tokamak-energy GitHub
   organisation.
 url: https://raw.githubusercontent.com/api-evangelist/tokamak-energy/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  probe_state: covered
+  source:
+  - authentication
+  - rate-limits
+  - security
+  generated: '2026-09-03'
+  method: derived
 image: https://tokamakenergy.com/wp-content/uploads/2025/03/TE_symbol_orange.svg
 x-type: company
 x-source: harvest:secondary-market
