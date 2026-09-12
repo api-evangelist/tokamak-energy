@@ -1,21 +1,19 @@
 ---
 kin_checks:
   slug: tokamak-energy
-  schema_version: 0.18.2
-  scored_at: '2026-09-04'
-  run_ts: 2026-09-04T062714
+  schema_version: 0.21.0
+  scored_at: '2026-09-12'
+  run_ts: 2026-09-12T080032
   note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.18.2.yml; counts below let you verify that.
+    in rubric/scoring-0.21.0.yml; counts below let you verify that.
   counts:
-    total: 132
-    earned: 21
+    total: 136
+    earned: 22
     partial: 22
     missed: 67
-    na: 22
+    na: 25
   checks:
   - id: well_known_published
-    status: missed
-  - id: llms_txt_published
     status: missed
   - id: apis_json_self_hosted
     status: missed
@@ -125,13 +123,17 @@ kin_checks:
     status: missed
   - id: reg_mandate_verified
     status: missed
+  - id: upsert_outcome_discriminator
+    status: missed
+  - id: upsert_alternate_key
+    status: missed
+  - id: upsert_named
+    status: missed
+  - id: upsert_declared_conflict
+    status: missed
   - id: agentic_access
     status: missed
-  - id: reversibility_documented
-    status: missed
   - id: mcp_server
-    status: missed
-  - id: idempotency
     status: missed
   - id: event_surface_described
     status: missed
@@ -140,8 +142,6 @@ kin_checks:
   - id: consent_identity
     status: missed
   - id: agent_card
-    status: missed
-  - id: dry_run_mode
     status: missed
   - id: delegated_identity
     status: missed
