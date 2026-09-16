@@ -59,9 +59,8 @@ apis:
 - aid: tokamak-energy:tokamak-energy-posts-api
   name: Tokamak Energy Posts API
   description: >-
-    Public, unauthenticated read access to the Tokamak Energy news archive behind
-    tokamakenergy.com/latest-news/ via the WordPress core REST API. Verified live at 84 published
-    posts on 2026-08-30.
+    Public, unauthenticated read access to the Tokamak Energy news archive behind tokamakenergy.com/latest-news/
+    via the WordPress core REST API. Verified live at 84 published posts on 2026-08-30.
   humanURL: https://tokamakenergy.com/wp-json/
   baseURL: https://tokamakenergy.com/wp-json
   tags:
@@ -90,10 +89,9 @@ apis:
 - aid: tokamak-energy:tokamak-energy-pages-api
   name: Tokamak Energy Pages API
   description: >-
-    Public, unauthenticated read access to the static pages of tokamakenergy.com — About Us, Our
-    Fusion Energy and HTS Technology, TE Magnetics, Careers, Early Careers, Current Vacancies, STEM
-    Outreach, Why Fusion, USA, Japan, Videos, Contact Us and Privacy. Verified live at 26 published
-    pages on 2026-08-30.
+    Public, unauthenticated read access to the static pages of tokamakenergy.com — About Us, Our Fusion
+    Energy and HTS Technology, TE Magnetics, Careers, Early Careers, Current Vacancies, STEM Outreach,
+    Why Fusion, USA, Japan, Videos, Contact Us and Privacy. Verified live at 26 published pages on 2026-08-30.
   humanURL: https://tokamakenergy.com/wp-json/
   baseURL: https://tokamakenergy.com/wp-json
   tags:
@@ -121,9 +119,9 @@ apis:
 - aid: tokamak-energy:tokamak-energy-media-api
   name: Tokamak Energy Media API
   description: >-
-    Public, unauthenticated read access to the Tokamak Energy media library — images, diagrams, PDFs
-    and video assets attached to news posts and pages, including ST40, Demo4 and TE Magnetics
-    imagery. Verified live at 853 media items on 2026-08-30.
+    Public, unauthenticated read access to the Tokamak Energy media library — images, diagrams, PDFs and
+    video assets attached to news posts and pages, including ST40, Demo4 and TE Magnetics imagery. Verified
+    live at 853 media items on 2026-08-30.
   humanURL: https://tokamakenergy.com/wp-json/
   baseURL: https://tokamakenergy.com/wp-json
   tags:
@@ -154,10 +152,10 @@ apis:
 - aid: tokamak-energy:tokamak-energy-area-items-api
   name: Tokamak Energy Area Items API
   description: >-
-    Public, unauthenticated read access to the site-specific `area-item` custom post type behind
-    tokamakenergy.com — the structured content blocks Tokamak Energy uses to compose its technology,
-    careers and about areas. Verified live at 27 items on 2026-08-30. This content type is
-    registered by Tokamak Energy's own site, not by WordPress core.
+    Public, unauthenticated read access to the site-specific `area-item` custom post type behind tokamakenergy.com
+    — the structured content blocks Tokamak Energy uses to compose its technology, careers and about areas.
+    Verified live at 27 items on 2026-08-30. This content type is registered by Tokamak Energy's own site,
+    not by WordPress core.
   humanURL: https://tokamakenergy.com/wp-json/
   baseURL: https://tokamakenergy.com/wp-json
   tags:
@@ -183,9 +181,9 @@ apis:
 - aid: tokamak-energy:tokamak-energy-taxonomy-api
   name: Tokamak Energy Taxonomy API
   description: >-
-    Public, unauthenticated read access to the classification terms Tokamak Energy applies to its
-    news archive — the category taxonomy (8 terms live on 2026-08-30) and the post tag taxonomy (0
-    terms live; registered and callable but currently unused).
+    Public, unauthenticated read access to the classification terms Tokamak Energy applies to its news
+    archive — the category taxonomy (8 terms live on 2026-08-30) and the post tag taxonomy (0 terms live;
+    registered and callable but currently unused).
   humanURL: https://tokamakenergy.com/wp-json/
   baseURL: https://tokamakenergy.com/wp-json
   tags:
@@ -212,9 +210,9 @@ apis:
 - aid: tokamak-energy:tokamak-energy-search-api
   name: Tokamak Energy Search API
   description: >-
-    Public, unauthenticated full-text search across every searchable object on tokamakenergy.com —
-    posts, pages and the area-item custom type — returning a lightweight result envelope (id, title,
-    url, type, subtype). Verified live at 137 searchable objects on 2026-08-30.
+    Public, unauthenticated full-text search across every searchable object on tokamakenergy.com — posts,
+    pages and the area-item custom type — returning a lightweight result envelope (id, title, url, type,
+    subtype). Verified live at 137 searchable objects on 2026-08-30.
   humanURL: https://tokamakenergy.com/wp-json/
   baseURL: https://tokamakenergy.com/wp-json
   tags:
@@ -238,10 +236,9 @@ apis:
 - aid: tokamak-energy:tokamak-energy-authors-api
   name: Tokamak Energy Authors API
   description: >-
-    Public, unauthenticated read access to the post authors of the Tokamak Energy news archive.
-    Verified live at 4 authors on 2026-08-30. WordPress exposes only the public author view — name,
-    slug, description, avatar and archive link — anonymously; email addresses and roles require
-    authentication.
+    Public, unauthenticated read access to the post authors of the Tokamak Energy news archive. Verified
+    live at 4 authors on 2026-08-30. WordPress exposes only the public author view — name, slug, description,
+    avatar and archive link — anonymously; email addresses and roles require authentication.
   humanURL: https://tokamakenergy.com/wp-json/
   baseURL: https://tokamakenergy.com/wp-json
   tags:
@@ -265,10 +262,10 @@ apis:
 - aid: tokamak-energy:tokamak-energy-discovery-api
   name: Tokamak Energy Discovery API
   description: >-
-    The machine-readable description of the Tokamak Energy content API itself — the REST root
-    document, the registered content types (including the site-specific `portfolio` and `area-item`
-    types), the registered taxonomies and the publication statuses. An agent can start at
-    GET /wp-json/ and reach every other operation in this profile without out-of-band knowledge.
+    The machine-readable description of the Tokamak Energy content API itself — the REST root document,
+    the registered content types (including the site-specific `portfolio` and `area-item` types), the
+    registered taxonomies and the publication statuses. An agent can start at GET /wp-json/ and reach
+    every other operation in this profile without out-of-band knowledge.
   humanURL: https://tokamakenergy.com/wp-json/
   baseURL: https://tokamakenergy.com/wp-json
   tags:
@@ -292,25 +289,20 @@ apis:
     url: conformance/tokamak-energy-conformance.yml
   - type: Lifecycle
     url: lifecycle/tokamak-energy-lifecycle.yml
-- aid: tokamak-energy:tokamak-energy-oembed-api
-  name: Tokamak Energy oEmbed API
+- aid: tokamak-energy:tokamak-energy-o-embed-api
+  name: Tokamak Energy o Embed API
   description: >-
-    Public, unauthenticated oEmbed 1.0 provider endpoint for tokamakenergy.com. Given the URL of any
-    Tokamak Energy post or page it returns an oEmbed rich/link response suitable for embedding the
-    item in a third-party surface. Verified live on 2026-08-30.
+    Public, unauthenticated oEmbed 1.0 provider endpoint for tokamakenergy.com. Given the URL of any Tokamak
+    Energy post or page, returns an oEmbed rich/link response suitable for embedding the item in a
   humanURL: https://tokamakenergy.com/wp-json/
   baseURL: https://tokamakenergy.com/wp-json
   tags:
-  - oEmbed
-  - Embedding
-  - Content
+  - o Embed
   properties:
   - type: OpenAPI
-    url: openapi/tokamak-energy-oembed-api-openapi.yml
+    url: openapi/tokamak-energy-o-embed-api-openapi.yml
   - type: Examples
     url: examples/tokamak-energy-oembed-example.json
-  - type: Overlay
-    url: overlays/tokamak-energy-oembed-api-overlay.yaml
   - type: Conformance
     url: conformance/tokamak-energy-conformance.yml
   - type: ErrorCatalog
@@ -321,6 +313,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/tokamak-energy-oembed-api-overlay.yaml
 - type: Website
   url: https://tokamakenergy.com/
 - type: About
