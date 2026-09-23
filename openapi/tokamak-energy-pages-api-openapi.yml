@@ -1,31 +1,27 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Tokamak Energy Pages API
   version: wp/v2
-  description: Public, unauthenticated read access to the static pages of tokamakenergy.com — About Us,
-    Our Fusion Energy and HTS Technology, TE Magnetics, Careers, Early Careers, Current Vacancies, STEM
-    Outreach, Why Fusion, USA, Japan, Videos, Contact Us and Privacy. Verified live at 26 published pages
-    on 2026-08-30. Read-only anonymous surface.
+  description: Public, unauthenticated read access to the static pages of tokamakenergy.com — About Us, Our Fusion Energy and HTS Technology, TE Magnetics, Careers, Early Careers, Current Vacancies, STEM Outreach, Why Fusion, USA, Japan, Videos, Contact Us and Privacy. Verified live at 26 published pages on 2026-08-30. Read-only anonymous surface.
   contact:
     name: Tokamak Energy
     url: https://tokamakenergy.com/contact-us/
-  x-derived-from: Live WordPress REST API route descriptors and OPTIONS item schemas served by https://tokamakenergy.com/wp-json/
-    (probed 2026-08-30).
+  x-derived-from: Live WordPress REST API route descriptors and OPTIONS item schemas served by https://tokamakenergy.com/wp-json/ (probed 2026-08-30).
 servers:
 - url: https://tokamakenergy.com/wp-json
   description: Tokamak Energy WordPress REST API
+security:
+- {}
+- applicationPassword: []
 tags:
 - name: Pages
-  description: Public, unauthenticated read access to the static pages of tokamakenergy.com — About Us,
-    Our Fusion Energy and HTS Technology, TE Magnetics, Careers, Early Careers, Current Vacancies, STEM
-    Outreach, W
+  description: Public, unauthenticated read access to the static pages of tokamakenergy.com — About Us, Our Fusion Energy and HTS Technology, TE Magnetics, Careers, Early Careers, Current Vacancies, STEM Outreach, W
 paths:
   /wp/v2/pages:
     get:
       operationId: listPages
       summary: List pages
-      description: Returns a paginated collection of pages published on tokamakenergy.com. Anonymous,
-        read-only. Probed live 2026-08-30 (26 items).
+      description: Returns a paginated collection of pages published on tokamakenergy.com. Anonymous, read-only. Probed live 2026-08-30 (26 items).
       tags:
       - Pages
       parameters:
@@ -276,24 +272,10 @@ paths:
                 title:
                   rendered: Early careers
                 content:
-                  rendered: <p>[vc_row section_type=&#8221;fullwidth&#8221; height_ratio=&#8221;70&#8243;
-                    padding_top_multiplier=&#8221;5x&#8221; padding_bottom_multiplier=&#8221;5x&#8221;
-                    rc_heading_color=&#8221;white&#8221; rc_link_color=&#8221;white&#8221; rc_link_hover_color=&#8221;primary-2&#8243;
-                    rc_bg_type=&#8221;image&#8221; rc_bg_image=&#8221;6432&#8243; rc_bg_color_overlay=&#8221;black&#8221;
-                    rc_bg_opacity_overlay=&#8221;30&#8243; mobile_columns_vertical_gap=&#8221;none&#8221;
-                    tablet_sm_height_ratio=&#8221;60&#8243; mobile_height_ratio=&#8221;60&#8243; rc_font_color=&#8221;#ffffff&#8221;
-                    rc_bg_color=&#8221;#4b5 … [truncated by API Evangelist for readability; full value
-                    returned by the live API]
+                  rendered: <p>[vc_row section_type=&#8221;fullwidth&#8221; height_ratio=&#8221;70&#8243; padding_top_multiplier=&#8221;5x&#8221; padding_bottom_multiplier=&#8221;5x&#8221; rc_heading_color=&#8221;white&#8221; rc_link_color=&#8221;white&#8221; rc_link_hover_color=&#8221;primary-2&#8243; rc_bg_type=&#8221;image&#8221; rc_bg_image=&#8221;6432&#8243; rc_bg_color_overlay=&#8221;black&#8221; rc_bg_opacity_overlay=&#8221;30&#8243; mobile_columns_vertical_gap=&#8221;none&#8221; tablet_sm_height_ratio=&#8221;60&#8243; mobile_height_ratio=&#8221;60&#8243; rc_font_color=&#8221;#ffffff&#8221; rc_bg_color=&#8221;#4b5 … [truncated by API Evangelist for readability; full value returned by the live API]
                   protected: false
                 excerpt:
-                  rendered: <p>[vc_row section_type=&#8221;fullwidth&#8221; height_ratio=&#8221;70&#8243;
-                    padding_top_multiplier=&#8221;5x&#8221; padding_bottom_multiplier=&#8221;5x&#8221;
-                    rc_heading_color=&#8221;white&#8221; rc_link_color=&#8221;white&#8221; rc_link_hover_color=&#8221;primary-2&#8243;
-                    rc_bg_type=&#8221;image&#8221; rc_bg_image=&#8221;6432&#8243; rc_bg_color_overlay=&#8221;black&#8221;
-                    rc_bg_opacity_overlay=&#8221;30&#8243; mobile_columns_vertical_gap=&#8221;none&#8221;
-                    tablet_sm_height_ratio=&#8221;60&#8243; mobile_height_ratio=&#8221;60&#8243; rc_font_color=&#8221;#ffffff&#8221;
-                    rc_bg_color=&#8221;#4b5 … [truncated by API Evangelist for readability; full value
-                    returned by the live API]
+                  rendered: <p>[vc_row section_type=&#8221;fullwidth&#8221; height_ratio=&#8221;70&#8243; padding_top_multiplier=&#8221;5x&#8221; padding_bottom_multiplier=&#8221;5x&#8221; rc_heading_color=&#8221;white&#8221; rc_link_color=&#8221;white&#8221; rc_link_hover_color=&#8221;primary-2&#8243; rc_bg_type=&#8221;image&#8221; rc_bg_image=&#8221;6432&#8243; rc_bg_color_overlay=&#8221;black&#8221; rc_bg_opacity_overlay=&#8221;30&#8243; mobile_columns_vertical_gap=&#8221;none&#8221; tablet_sm_height_ratio=&#8221;60&#8243; mobile_height_ratio=&#8221;60&#8243; rc_font_color=&#8221;#ffffff&#8221; rc_bg_color=&#8221;#4b5 … [truncated by API Evangelist for readability; full value returned by the live API]
                   protected: false
                 author: 1
                 featured_media: 6430
@@ -313,28 +295,22 @@ paths:
                 - has-post-thumbnail
                 - hentry
                 - grve-isotope-item
-                yoast_head: '<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/
-                  -->
+                yoast_head: '<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/ -->
 
                   <title>Early Careers - Tokamak Energy</title>
 
-                  <meta name="description" content="Building talent for the fusion energy industry of
-                  the future through apprenticeships, undergraduate student placements and PhD sponsorship."
-                  />
+                  <meta name="description" content="Building talent for the fusion energy industry of the future through apprenticeships, undergraduate student placements and PhD sponsorship." />
 
-                  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large,
-                  max-video-preview:-1" />
+                  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
                   <link rel="canonical" href="https://tokamakenergy.com/early-careers/" />
 
                   <meta property="og:locale" content="en_GB" />
 
-                  <meta property="og:type" content=" … [truncated by API Evangelist for readability; full
-                  value returned by the live API]'
+                  <meta property="og:type" content=" … [truncated by API Evangelist for readability; full value returned by the live API]'
                 yoast_head_json:
                   title: Early Careers - Tokamak Energy
-                  description: Building talent for the fusion energy industry of the future through apprenticeships,
-                    undergraduate student placements and PhD sponsorship.
+                  description: Building talent for the fusion energy industry of the future through apprenticeships, undergraduate student placements and PhD sponsorship.
                   robots:
                     index: index
                     follow: follow
@@ -345,8 +321,7 @@ paths:
                   og_locale: en_GB
                   og_type: article
                   og_title: Early Careers - Tokamak Energy
-                  og_description: Building talent for the fusion energy industry of the future through
-                    apprenticeships, undergraduate student placements and PhD sponsorship.
+                  og_description: Building talent for the fusion energy industry of the future through apprenticeships, undergraduate student placements and PhD sponsorship.
                   og_url: https://tokamakenergy.com/early-careers/
                   og_site_name: Tokamak Energy
                   article_modified_time: '2026-08-27T10:43:57+00:00'
@@ -375,8 +350,7 @@ paths:
                       thumbnailUrl: https://tokamakenergy.com/wp-content/uploads/2023/11/Early-careers_thumbnail.jpg
                       datePublished: '2026-07-28T14:41:10+00:00'
                       dateModified: '2026-08-27T10:43:57+00:00'
-                      description: Building talent for the fusion energy industry of the future through
-                        apprenticeships, undergraduate student placements and PhD sponsorship.
+                      description: Building talent for the fusion energy industry of the future through apprenticeships, undergraduate student placements and PhD sponsorship.
                       breadcrumb:
                         '@id': https://tokamakenergy.com/early-careers/#breadcrumb
                       inLanguage: en-GB
@@ -497,27 +471,6 @@ paths:
                 $ref: '#/components/schemas/WPError'
 components:
   schemas:
-    WPError:
-      type: object
-      title: WPError
-      description: WordPress REST API error envelope, observed live on this host.
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code, e.g. rest_post_invalid_id or rest_forbidden.
-        message:
-          type: string
-          description: Human-readable error message.
-        data:
-          type: object
-          description: Error data.
-          properties:
-            status:
-              type: integer
-              description: HTTP status code.
-      required:
-      - code
-      - message
     Page:
       title: page
       type: object
@@ -668,22 +621,34 @@ components:
         template:
           description: The theme file to use to display the post.
           type: string
+    WPError:
+      type: object
+      title: WPError
+      description: WordPress REST API error envelope, observed live on this host.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_post_invalid_id or rest_forbidden.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          description: Error data.
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+      required:
+      - code
+      - message
   securitySchemes:
     applicationPassword:
       type: http
       scheme: basic
-      description: WordPress Application Passwords (HTTP Basic). Declared by this site at GET /wp-json/
-        under authentication.application-passwords. Required only for authenticated scopes and write operations;
-        every operation described in this document is readable anonymously.
-security:
-- {}
-- applicationPassword: []
+      description: WordPress Application Passwords (HTTP Basic). Declared by this site at GET /wp-json/ under authentication.application-passwords. Required only for authenticated scopes and write operations; every operation described in this document is readable anonymously.
 x-provenance:
   generated: '2026-08-30'
   method: derived
-  source: https://tokamakenergy.com/wp-json/ (route descriptors) + OPTIONS on each collection route (item
-    schemas), probed 2026-08-30
-  note: Derived by API Evangelist from the WordPress REST API descriptors this site publishes at its own
-    /wp-json/ root. Parameters, types, enums, defaults and item schemas are the values WordPress itself
-    reports for this host; response examples are verbatim live captures. Tokamak Energy does not publish
-    an OpenAPI document of its own.
+  source: https://tokamakenergy.com/wp-json/ (route descriptors) + OPTIONS on each collection route (item schemas), probed 2026-08-30
+  note: Derived by API Evangelist from the WordPress REST API descriptors this site publishes at its own /wp-json/ root. Parameters, types, enums, defaults and item schemas are the values WordPress itself reports for this host; response examples are verbatim live captures. Tokamak Energy does not publish an OpenAPI document of its own.

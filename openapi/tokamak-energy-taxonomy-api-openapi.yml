@@ -1,31 +1,27 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Tokamak Energy Taxonomy API
   version: wp/v2
-  description: Public, unauthenticated read access to the classification terms Tokamak Energy applies
-    to its news archive — the category taxonomy (8 terms live on 2026-08-30) and the post tag taxonomy
-    (0 terms live; the taxonomy is registered and callable but currently unused). Read-only anonymous
-    surface.
+  description: Public, unauthenticated read access to the classification terms Tokamak Energy applies to its news archive — the category taxonomy (8 terms live on 2026-08-30) and the post tag taxonomy (0 terms live; the taxonomy is registered and callable but currently unused). Read-only anonymous surface.
   contact:
     name: Tokamak Energy
     url: https://tokamakenergy.com/contact-us/
-  x-derived-from: Live WordPress REST API route descriptors and OPTIONS item schemas served by https://tokamakenergy.com/wp-json/
-    (probed 2026-08-30).
+  x-derived-from: Live WordPress REST API route descriptors and OPTIONS item schemas served by https://tokamakenergy.com/wp-json/ (probed 2026-08-30).
 servers:
 - url: https://tokamakenergy.com/wp-json
   description: Tokamak Energy WordPress REST API
+security:
+- {}
+- applicationPassword: []
 tags:
 - name: Taxonomy
-  description: Public, unauthenticated read access to the classification terms Tokamak Energy applies
-    to its news archive — the category taxonomy (8 terms live on 2026-08-30) and the post tag taxonomy
-    (0 terms live;
+  description: Public, unauthenticated read access to the classification terms Tokamak Energy applies to its news archive — the category taxonomy (8 terms live on 2026-08-30) and the post tag taxonomy (0 terms live;
 paths:
   /wp/v2/categories:
     get:
       operationId: listCategories
       summary: List categories
-      description: Returns a paginated collection of categories published on tokamakenergy.com. Anonymous,
-        read-only. Probed live 2026-08-30 (8 items).
+      description: Returns a paginated collection of categories published on tokamakenergy.com. Anonymous, read-only. Probed live 2026-08-30 (8 items).
       tags:
       - Taxonomy
       parameters:
@@ -138,7 +134,7 @@ paths:
       responses:
         '200':
           description: A page of categories.
-          headers: &id001
+          headers:
             X-WP-Total:
               description: Total number of items in the collection.
               schema:
@@ -167,13 +163,11 @@ paths:
                 taxonomy: category
                 parent: 0
                 meta: []
-                yoast_head: '<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/
-                  -->
+                yoast_head: '<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/ -->
 
                   <title>Blog Archives - Tokamak Energy</title>
 
-                  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large,
-                  max-video-preview:-1" />
+                  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
                   <link rel="canonical" href="https://tokamakenergy.com/category/blog/" />
 
@@ -185,8 +179,7 @@ paths:
 
                   <meta property="og:url" content="https://tokamakenergy.com/category/blog/" />
 
-                  <meta property="og … [truncated by API Evangelist for readability; full value returned
-                  by the live API]'
+                  <meta property="og … [truncated by API Evangelist for readability; full value returned by the live API]'
                 yoast_head_json:
                   title: Blog Archives - Tokamak Energy
                   robots:
@@ -271,13 +264,11 @@ paths:
                 taxonomy: category
                 parent: 0
                 meta: []
-                yoast_head: '<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/
-                  -->
+                yoast_head: '<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/ -->
 
                   <title>Collaborator Archives - Tokamak Energy</title>
 
-                  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large,
-                  max-video-preview:-1" />
+                  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
                   <link rel="canonical" href="https://tokamakenergy.com/category/collaborator/" />
 
@@ -287,8 +278,7 @@ paths:
 
                   <meta property="og:title" content="Collaborator Archives - Tokamak Energy" />
 
-                  <meta property="og:url" content="https://tokamakenergy.com/category/coll … [truncated
-                  by API Evangelist for readability; full value returned by the live API]'
+                  <meta property="og:url" content="https://tokamakenergy.com/category/coll … [truncated by API Evangelist for readability; full value returned by the live API]'
                 yoast_head_json:
                   title: Collaborator Archives - Tokamak Energy
                   robots:
@@ -373,13 +363,11 @@ paths:
                 taxonomy: category
                 parent: 0
                 meta: []
-                yoast_head: '<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/
-                  -->
+                yoast_head: '<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/ -->
 
                   <title>News article Archives - Tokamak Energy</title>
 
-                  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large,
-                  max-video-preview:-1" />
+                  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
                   <link rel="canonical" href="https://tokamakenergy.com/category/news-article/" />
 
@@ -389,8 +377,7 @@ paths:
 
                   <meta property="og:title" content="News article Archives - Tokamak Energy" />
 
-                  <meta property="og:url" content="https://tokamakenergy.com/category/news … [truncated
-                  by API Evangelist for readability; full value returned by the live API]'
+                  <meta property="og:url" content="https://tokamakenergy.com/category/news … [truncated by API Evangelist for readability; full value returned by the live API]'
                 yoast_head_json:
                   title: News article Archives - Tokamak Energy
                   robots:
@@ -520,8 +507,7 @@ paths:
     get:
       operationId: listTags
       summary: List tags
-      description: Returns a paginated collection of tags published on tokamakenergy.com. Anonymous, read-only.
-        Probed live 2026-08-30 (0 items).
+      description: Returns a paginated collection of tags published on tokamakenergy.com. Anonymous, read-only. Probed live 2026-08-30 (0 items).
       tags:
       - Taxonomy
       parameters:
@@ -634,7 +620,19 @@ paths:
       responses:
         '200':
           description: A page of tags.
-          headers: *id001
+          headers:
+            X-WP-Total:
+              description: Total number of items in the collection.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total number of pages available at the current per_page value.
+              schema:
+                type: integer
+            Link:
+              description: RFC 8288 pagination links (rel="next" / rel="prev").
+              schema:
+                type: string
           content:
             application/json:
               schema:
@@ -693,27 +691,37 @@ paths:
                 $ref: '#/components/schemas/WPError'
 components:
   schemas:
-    WPError:
+    Tag:
+      title: tag
       type: object
-      title: WPError
-      description: WordPress REST API error envelope, observed live on this host.
       properties:
-        code:
+        id:
+          description: Unique identifier for the term.
+          type: integer
+        count:
+          description: Number of published posts for the term.
+          type: integer
+        description:
+          description: HTML description of the term.
           type: string
-          description: Machine-readable error code, e.g. rest_post_invalid_id or rest_forbidden.
-        message:
+        link:
+          description: URL of the term.
           type: string
-          description: Human-readable error message.
-        data:
+          format: uri
+        name:
+          description: HTML title for the term.
+          type: string
+        slug:
+          description: An alphanumeric identifier for the term unique to its type.
+          type: string
+        taxonomy:
+          description: Type attribution for the term.
+          type: string
+          enum:
+          - post_tag
+        meta:
+          description: Meta fields.
           type: object
-          description: Error data.
-          properties:
-            status:
-              type: integer
-              description: HTTP status code.
-      required:
-      - code
-      - message
     Category:
       title: category
       type: object
@@ -748,53 +756,34 @@ components:
         meta:
           description: Meta fields.
           type: object
-    Tag:
-      title: tag
+    WPError:
       type: object
+      title: WPError
+      description: WordPress REST API error envelope, observed live on this host.
       properties:
-        id:
-          description: Unique identifier for the term.
-          type: integer
-        count:
-          description: Number of published posts for the term.
-          type: integer
-        description:
-          description: HTML description of the term.
+        code:
           type: string
-        link:
-          description: URL of the term.
+          description: Machine-readable error code, e.g. rest_post_invalid_id or rest_forbidden.
+        message:
           type: string
-          format: uri
-        name:
-          description: HTML title for the term.
-          type: string
-        slug:
-          description: An alphanumeric identifier for the term unique to its type.
-          type: string
-        taxonomy:
-          description: Type attribution for the term.
-          type: string
-          enum:
-          - post_tag
-        meta:
-          description: Meta fields.
+          description: Human-readable error message.
+        data:
           type: object
+          description: Error data.
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+      required:
+      - code
+      - message
   securitySchemes:
     applicationPassword:
       type: http
       scheme: basic
-      description: WordPress Application Passwords (HTTP Basic). Declared by this site at GET /wp-json/
-        under authentication.application-passwords. Required only for authenticated scopes and write operations;
-        every operation described in this document is readable anonymously.
-security:
-- {}
-- applicationPassword: []
+      description: WordPress Application Passwords (HTTP Basic). Declared by this site at GET /wp-json/ under authentication.application-passwords. Required only for authenticated scopes and write operations; every operation described in this document is readable anonymously.
 x-provenance:
   generated: '2026-08-30'
   method: derived
-  source: https://tokamakenergy.com/wp-json/ (route descriptors) + OPTIONS on each collection route (item
-    schemas), probed 2026-08-30
-  note: Derived by API Evangelist from the WordPress REST API descriptors this site publishes at its own
-    /wp-json/ root. Parameters, types, enums, defaults and item schemas are the values WordPress itself
-    reports for this host; response examples are verbatim live captures. Tokamak Energy does not publish
-    an OpenAPI document of its own.
+  source: https://tokamakenergy.com/wp-json/ (route descriptors) + OPTIONS on each collection route (item schemas), probed 2026-08-30
+  note: Derived by API Evangelist from the WordPress REST API descriptors this site publishes at its own /wp-json/ root. Parameters, types, enums, defaults and item schemas are the values WordPress itself reports for this host; response examples are verbatim live captures. Tokamak Energy does not publish an OpenAPI document of its own.

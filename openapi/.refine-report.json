@@ -1,0 +1,34 @@
+{
+  "provider": "tokamak-energy",
+  "sources": [
+    "tokamak-energy-area-items-api-openapi.yml",
+    "tokamak-energy-authors-api-openapi.yml",
+    "tokamak-energy-discovery-api-openapi.yml",
+    "tokamak-energy-media-api-openapi.yml",
+    "tokamak-energy-o-embed-api-openapi.yml",
+    "tokamak-energy-pages-api-openapi.yml",
+    "tokamak-energy-posts-api-openapi.yml",
+    "tokamak-energy-search-api-openapi.yml",
+    "tokamak-energy-taxonomy-api-openapi.yml"
+  ],
+  "outputs": [
+    "tokamak-energy-area-items-api-openapi.yml",
+    "tokamak-energy-authors-api-openapi.yml",
+    "tokamak-energy-discovery-api-openapi.yml",
+    "tokamak-energy-media-api-openapi.yml",
+    "tokamak-energy-o-embed-api-openapi.yml",
+    "tokamak-energy-pages-api-openapi.yml",
+    "tokamak-energy-posts-api-openapi.yml",
+    "tokamak-energy-search-api-openapi.yml",
+    "tokamak-energy-taxonomy-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [
+    "no openapi/_original/ archive: this run re-split PREVIOUSLY REFINED output, so any base URL it carries is inherited from an earlier pass rather than read from a document the provider published"
+  ],
+  "notes": [
+    "apis.yml register: already-registered"
+  ],
+  "skipped": []
+}
